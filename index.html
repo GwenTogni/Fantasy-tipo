@@ -1,0 +1,3364 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <title>Fantasy Avatar Generator</title>
+        <link rel="stylesheet" href="main_facce.css">
+        <style type="text/css">
+            
+            .interfaccia {
+                background-color:rgba(185, 212, 185);
+                position: absolute;
+                right: 550px;
+                top: 0;
+                bottom: 0;   
+                padding: 30px;
+                width: fit-content;  
+                max-width: 250px;
+                min-width: 100px;             
+            }
+
+            .interfacciaPunteggio {
+                background: none;
+                position: absolute;
+                right: 150px;
+                top: 0;
+                bottom: 0;   
+                padding: 50px;
+                width: max-content;  
+                max-width: 400px;
+                min-width: 100px;
+            }
+
+            .interfaccia2 {
+                background-color:rgb(167, 193, 203);
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;   
+                padding: 30px;
+                width: fit-content;  
+                max-width: 250px;
+                min-width: 100px;          
+            }
+
+            .interfacciaTesto {
+                background-color:rgba(203, 167, 202, 0.25);
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;   
+                padding: 50px;
+                padding-top: 50px;
+                width: fit-content;  
+                max-width: 400px;
+                min-width: 100px;
+                color: rgba(0, 0, 0, 0.575);
+                font-size: 12pt;
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+            }
+
+            .interfaccia input[type="range"] {            
+        		height: 10px;
+        		appearance: none;
+        		-webkit-appearance: none;
+        		border: none;
+        		background-color: rgba(0, 0, 0, 0.575);
+        		display: block;
+                margin-left: 30px;
+                border-radius: 5px;
+            }
+
+            .interfaccia label {
+                font-family: 'Gill Sans', 'Gill Sans MT';
+                color: rgba(0, 0, 0, 0.575);
+                font-size: 14pt;
+                padding-top: 30px;
+                padding-left: 30px;
+                padding-bottom: 10px;
+                height: 20px;
+        		display: block;
+            }
+
+        /* PULSANTI interfaccia */
+            .pulsante0 {
+                width: 100%;
+                height: 100%;
+            }
+
+            .pulsante1 {
+                background: none;
+                width: 100px;
+                height: 100px;
+                margin-right: 10px;
+                margin-top: 10px;
+                border: none;
+            }
+
+            #test_2 {
+                display: none;
+            }
+    /* TAB */
+        /* Stile del tab */
+            .tab {
+                width: 80px;
+                height: 80px;
+                margin-left: 10px;
+                margin-top: 10px;
+                color: rgba(0, 0, 0, 0.575);
+}
+
+        /* Pulsanti che aprono il tab */
+            .tab button {
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+                font-size: 15pt;
+                float: right;
+                text-align: end;
+                width: fit-content;
+                height: 50px;
+                border: none;
+                margin-top: 10px;
+                color: rgba(0, 0, 0, 0.575);
+                background: none;
+            }
+
+        /* Pulsanti tab quando si passa sopra con il mouse */
+            .tab button:hover {
+                font-size: 16pt;
+                color: black;
+            }
+
+            .tab button:active {
+                font-size: 14pt;
+                color: white;
+            }
+
+        /* Stile contenuti tab */
+            .tabcontent {
+                display: none;
+            }
+
+            .tabtestiFaccia {
+                display: none;
+            }
+
+            .tabtestiOcchi {
+                display: none;
+            }
+
+            .tabtestiNaso {
+                display: none;
+            }
+
+            .tabtestiBocca {
+                display: none;
+            }
+
+            .tabcontent button:hover {
+                background-color: rgb(207, 232, 207);
+                border-style: outset;
+                border-radius: 50px;
+            }
+
+            .tabcontent button:active {
+                background-color: rgb(214, 247, 214);
+                border-style: inset;
+            }
+    
+    /* TESTI */
+            .titolo {
+                position: absolute;
+                left: 330px;
+                margin-top: 20px;
+                color: rgba(0, 0, 0, 0.575);
+                font-size: 16pt;
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+                text-align: center;
+            }
+
+            .testoIntro {
+                padding-bottom: 70px;
+                font-weight: lighter;
+                font-style: italic;
+                font-size: 12.5pt;
+            }
+
+            .testiFaccia {
+                position: absolute;
+                margin-top: 614px;
+                color: rgba(0, 0, 0, 0.575);
+                font-size: 12pt;
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+            }
+
+            .testiOcchi {
+                position: absolute;
+                margin-top: 664px;
+                color: rgba(0, 0, 0, 0.575);
+                font-size: 12pt;
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+            }
+
+            .testiNaso {
+                position: absolute;
+                margin-top: 714px;
+                color: rgba(0, 0, 0, 0.575);
+                font-size: 12pt;
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+            }
+
+            .testiBocca {
+                position: absolute;
+                margin-top: 764px;
+                color: rgba(0, 0, 0, 0.575);
+                font-size: 12pt;
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+            }
+
+            .testiPunteggio {
+                background: none;
+                color: rgba(0, 0, 0, 0.575);
+                width: min-content;
+                font-size: 12pt;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border: none;
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+                text-align: left;
+            }
+
+            .testiPunteggio:hover {
+                font-size: 13pt;
+                color: black;
+            }
+
+            .testiPunteggio:active {
+                font-size: 11pt;
+                color: rgb(170, 170, 170);
+            }
+
+    /* BARRA PUNTEGGIO */
+            .barraPunteggio {
+                position: absolute;
+                display: none;
+            }
+
+        /* FOLLETTO */
+            .punteggioFollettoFaccia{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 245px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioFollettoOcchi{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 245px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioFollettoNaso{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 245px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioFollettoBocca{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 245px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+        /* DROW */
+            .punteggioDrowFaccia{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 288px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioDrowOcchi{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 288px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioDrowNaso{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 288px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioDrowBocca{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 288px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+        /* GOBLIN */
+            .punteggioGoblinFaccia{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 331px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioGoblinOcchi{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 331px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioGoblinNaso{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 331px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioGoblinBocca{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 331px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+        /* ORCO */
+            .punteggioOrcoFaccia{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 374px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioOrcoOcchi{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 374px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioOrcoNaso{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 374px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioOrcoBocca{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 374px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+        /* VAMPIRO */
+            .punteggioVampiroFaccia{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 417px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioVampiroOcchi{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 417px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioVampiroNaso{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 417px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioVampiroBocca{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 417px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+        /* GNOMO */
+            .punteggioGnomoFaccia{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 460px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioGnomoOcchi{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 460px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioGnomoNaso{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 460px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioGnomoBocca{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 460px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+        /* TROLL */
+            .punteggioTrollFaccia{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 503px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioTrollOcchi{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 503px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioTrollNaso{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 503px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioTrollBocca{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 503px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+        /* ELFO */
+            .punteggioElfoFaccia{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 546px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioElfoOcchi{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 546px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioElfoNaso{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 546px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+            .punteggioElfoBocca{
+                display: none;
+                position: relative;
+                margin-left: 5px;
+                border-radius: 10px;
+                background-color: rgb(203, 167, 202);
+                margin-top: 546px;
+                height: 20px;
+                width: 20px;
+                float: left;
+            }
+
+        </style>
+    </head>
+    <body>
+
+    <!-- AVATAR -->
+        <div class="contenitore">
+            <div class="layer pelle" id="pelle">
+                <img src="assets/pelle_8.png" class="pelle">
+            </div>
+            <div class="layer faccia" id="faccia">
+            </div>
+            <div class="layer naso" id="nasi">
+            </div>
+            <div class="layer bocca" id="sorriso">
+            </div>
+            <div class="layer occhi" id="occhio">
+            </div>
+        </div>
+
+        <div class="titolo">
+                <h1>Fantasy Avatar Generator</h1>
+                <p>A quale popolo fantasy appartieni?</p>
+        </div>
+
+    <!-- testo a comparsa -->
+        <div class="interfacciaTesto" id="interfaccia3">
+            <p class="testoIntro">
+                Da sempre il nostro mondo è abitato dalle creature del piccolo popolo: elfi, gnomi, folletti e tante altre!
+                </br>Queste vivono nascoste nella foresta, sulle montagne e tra le rocce, ma a volte capita che interagiscano con gli umani.
+                </br>Sei curioso/a di scoprire se per caso discendi da uno di questi popoli misteriosi? Allora seleziona i caratteri del tuo viso e lasciati sorprendere!
+            </p>
+
+        <!-- PUNTEGGIO -->
+            <button id="vFolletto" class="testiPunteggio"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia0'),
+                compareBarraFolletto(event, 'barra'),
+                comparePunteggioFollettoFaccia(event, 'punteggioFolletto1')
+                compareTestoOcchi(event, 'descrizioneOcchi0'),
+                compareBarraFolletto(event, 'barra'),
+                comparePunteggioFollettoOcchi(event, 'punteggioFolletto2')
+                compareTestoNaso(event, 'descrizioneNaso0'),
+                compareBarraFolletto(event, 'barra'),
+                comparePunteggioFollettoNaso(event, 'punteggioFolletto3')
+                compareTestoBocca(event, 'descrizioneBocca0'),
+                compareBarraFolletto(event, 'barra'),
+                comparePunteggioFollettoBocca(event, 'punteggioFolletto4')"
+                >FOLLETTO
+            </button>
+        </br>
+            <button id="vDrow" class="testiPunteggio"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia1'),
+                compareBarraDrow(event, 'barra1'),
+                comparePunteggioDrowFaccia(event, 'punteggioDrow1')
+                compareTestoOcchi(event, 'descrizioneOcchi1'),
+                compareBarraDrow(event, 'barra1'),
+                comparePunteggioDrowOcchi(event, 'punteggioDrow2')
+                compareTestoNaso(event, 'descrizioneNaso1'),
+                compareBarraDrow(event, 'barra1'),
+                comparePunteggioDrowNaso(event, 'punteggioDrow3')
+                compareTestoBocca(event, 'descrizioneBocca1'),
+                compareBarraDrow(event, 'barra1'),
+                comparePunteggioDrowBocca(event, 'punteggioDrow4')"
+                >DROW
+            </button>
+        </br>
+            <button id="vGoblin" class="testiPunteggio"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia2'),
+                compareBarraGoblin(event, 'barra2'),
+                comparePunteggioGoblinFaccia(event, 'punteggioGoblin1')
+                compareTestoOcchi(event, 'descrizioneOcchi2'),
+                compareBarraGoblin(event, 'barra2'),
+                comparePunteggioGoblinOcchi(event, 'punteggioGoblin2')
+                compareTestoNaso(event, 'descrizioneNaso2'),
+                compareBarraGoblin(event, 'barra2'),
+                comparePunteggioGoblinNaso(event, 'punteggioGoblin3')
+                compareTestoBocca(event, 'descrizioneBocca2'),
+                compareBarraGoblin(event, 'barra2'),
+                comparePunteggioGoblinBocca(event, 'punteggioGoblin4')"
+                >GOBLIN
+            </button>        
+        </br>
+            <button id="vOrco" class="testiPunteggio"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia3'),
+                compareBarraOrco(event, 'barra3'),
+                comparePunteggioOrcoFaccia(event, 'punteggioOrco1')
+                compareTestoOcchi(event, 'descrizioneOcchi3'),
+                compareBarraOrco(event, 'barra3'),
+                comparePunteggioFollettoOcchi(event, 'punteggioOrco2')
+                compareTestoNaso(event, 'descrizioneNaso3'),
+                compareBarraOrco(event, 'barra3'),
+                comparePunteggioOrcoNaso(event, 'punteggioOrco3')
+                compareTestoBocca(event, 'descrizioneBocca3'),
+                compareBarraOrco(event, 'barra3'),
+                comparePunteggioOrcoBocca(event, 'punteggioOrco4')"
+                >ORCO
+            </button>
+        </br>
+            <button id="vVampiro" class="testiPunteggio"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia4'),
+                compareBarraVampiro(event, 'barra4'),
+                comparePunteggioVampiroFaccia(event, 'punteggioVampiro1')
+
+                compareTestoOcchi(event, 'descrizioneOcchi4'),
+                compareBarraVampiro(event, 'barra4'),
+                comparePunteggioVampiroOcchi(event, 'punteggioVampiro2')
+
+                compareTestoNaso(event, 'descrizioneNaso4'),
+                compareBarraVampiro(event, 'barra4'),
+                comparePunteggioVampiroNaso(event, 'punteggioVampiro3')
+
+                compareTestoBocca(event, 'descrizioneBocca4'),
+                compareBarraVampiro(event, 'barra4'),
+                comparePunteggioVampiroBocca(event, 'punteggioVampiro4')"
+                >VAMPIRO
+            </button>
+        </br>
+            <button id="vGnomo" class="testiPunteggio"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia5'),
+                compareBarraGnomo(event, 'barra5'),
+                comparePunteggioGnomoFaccia(event, 'punteggioGnomo1')
+
+                compareTestoOcchi(event, 'descrizioneOcchi5'),
+                compareBarraGnomo(event, 'barra5'),
+                comparePunteggioGnomoOcchi(event, 'punteggioGnomo2')
+
+                compareTestoNaso(event, 'descrizioneNaso5'),
+                compareBarraGnomo(event, 'barra5'),
+                comparePunteggioGnomoNaso(event, 'punteggioGnomo3')
+
+                compareTestoBocca(event, 'descrizioneBocca5'),
+                compareBarraGnomo(event, 'barra5'),
+                comparePunteggioGnomoBocca(event, 'punteggioGnomo4')"
+                >GNOMO
+            </button>
+        </br>
+            <button id="vTroll" class="testiPunteggio"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia6'),
+                compareBarraTroll(event, 'barra6'),
+                comparePunteggioTrollFaccia(event, 'punteggioTroll1')
+
+                compareTestoOcchi(event, 'descrizioneOcchi6'),
+                compareBarraTroll(event, 'barra6'),
+                comparePunteggioTrollOcchi(event, 'punteggioTroll2')
+
+                compareTestoNaso(event, 'descrizioneNaso6'),
+                compareBarraTroll(event, 'barra6'),
+                comparePunteggioTrollNaso(event, 'punteggioTroll3')
+
+                compareTestoBocca(event, 'descrizioneBocca6'),
+                compareBarraTroll(event, 'barra6'),
+                comparePunteggioTrollBocca(event, 'punteggioTroll4')"
+                >TROLL
+            </button>
+        </br> 
+            <button id="vElfo" class="testiPunteggio"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia7'),
+                compareBarraElfo(event, 'barra7'),
+                comparePunteggioElfoFaccia(event, 'punteggioElfo1')
+
+                compareTestoOcchi(event, 'descrizioneOcchi7'),
+                compareBarraElfo(event, 'barra7'),
+                comparePunteggioElfoOcchi(event, 'punteggioElfo2')
+
+                compareTestoNaso(event, 'descrizioneNaso7'),
+                compareBarraElfo(event, 'barra7'),
+                comparePunteggioElfoNaso(event, 'punteggioElfo3')
+
+                compareTestoBocca(event, 'descrizioneBocca7'),
+                compareBarraElfo(event, 'barra7'),
+                comparePunteggioElfoBocca(event, 'punteggioElfo4')"
+                >ELFO
+            </button>
+        </div>
+
+    <!-- VOLTO -->
+        <div class="interfacciaPunteggio" id="interfaccia3">
+            <div id="descrizioneFaccia0" class="tabtestiFaccia">
+                <p class="testiFaccia">Viso tondo</p>
+            </div>
+
+            <div id="descrizioneFaccia1" class="tabtestiFaccia">
+            <p class="testiFaccia">Viso ovale</p>
+            </div>
+
+            <div id="descrizioneFaccia2" class="tabtestiFaccia">
+            <p class="testiFaccia">Viso squadrato</p>
+            </div>
+
+            <div id="descrizioneFaccia3" class="tabtestiFaccia">
+            <p class="testiFaccia">Viso rettangolare</p>
+            </div>
+
+            <div id="descrizioneFaccia4" class="tabtestiFaccia">
+            <p class="testiFaccia">Viso triangolare</p>
+            </div>
+
+            <div id="descrizioneFaccia5" class="tabtestiFaccia">
+            <p class="testiFaccia">Viso triangolare capovolto</p>
+            </div>
+
+            <div id="descrizioneFaccia6" class="tabtestiFaccia">
+            <p class="testiFaccia">Viso romboidale</p>
+            </div>
+
+            <div id="descrizioneFaccia7" class="tabtestiFaccia">
+            <p class="testiFaccia">Viso a cuore</p>
+            </div>
+        </div>
+    <!-- OCCHI -->
+        <div class="interfacciaPunteggio" id="interfaccia3">
+            <div id="descrizioneOcchi0" class="tabtestiOcchi">
+            <p class="testiOcchi">Occhi grandi tondi</p>
+            </div>
+
+            <div id="descrizioneOcchi1" class="tabtestiOcchi">
+            <p class="testiOcchi">Occhi ovali</p>
+            </div>
+
+            <div id="descrizioneOcchi2" class="tabtestiOcchi">
+            <p class="testiOcchi">Occhi quadrati</p>
+            </div>
+
+            <div id="descrizioneOcchi3" class="tabtestiOcchi">
+            <p class="testiOcchi">Occhi rettangolari</p>
+            </div>
+
+            <div id="descrizioneOcchi4" class="tabtestiOcchi">
+            <p class="testiOcchi">Occhi trinagolari cattivi</p>
+            </div>
+
+            <div id="descrizioneOcchi5" class="tabtestiOcchi">
+            <p class="testiOcchi">Occhi triangolari al contrario</p>
+            </div>
+
+            <div id="descrizioneOcchi6" class="tabtestiOcchi">
+            <p class="testiOcchi">Occhi piccoli tondi</p>
+            </div>
+
+            <div id="descrizioneOcchi7" class="tabtestiOcchi">
+            <p class="testiOcchi">Occhi sottili</p>
+            </div>
+        </div>
+    <!-- NASO -->
+        <div class="interfacciaPunteggio" id="interfaccia3">
+
+            <div id="descrizioneNaso0" class="tabtestiNaso">
+            <p class="testiNaso">Naso piccolo rotondo</p>
+            </div>
+
+            <div id="descrizioneNaso1" class="tabtestiNaso">
+            <p class="testiNaso">Naso dritto</p>
+            </div>
+
+            <div id="descrizioneNaso2" class="tabtestiNaso">
+            <p class="testiNaso">Naso lungo aquilino</p>
+            </div>
+
+            <div id="descrizioneNaso3" class="tabtestiNaso">
+            <p class="testiNaso">Naso grosso squadrato</p>
+            </div>
+
+            <div id="descrizioneNaso4" class="tabtestiNaso">
+            <p class="testiNaso">Naso piccolo affilato</p>
+            </div>
+
+            <div id="descrizioneNaso5" class="tabtestiNaso">
+            <p class="testiNaso">Naso all'in su</p>
+            </div>
+
+            <div id="descrizioneNaso6" class="tabtestiNaso">
+            <p class="testiNaso">Naso largo</p>
+            </div>
+
+            <div id="descrizioneNaso7" class="tabtestiNaso">
+            <p class="testiNaso">Naso a punta</p>
+            </div>
+        </div>
+    <!-- BOCCA -->
+        <div class="interfacciaPunteggio" id="interfaccia3">
+            
+            <div id="descrizioneBocca0" class="tabtestiBocca">
+            <p class="testiBocca">Sorriso furbo</p>
+            </div>
+
+            <div id="descrizioneBocca1" class="tabtestiBocca">
+            <p class="testiBocca">Smorfia triste</p>
+            </div>
+
+            <div id="descrizioneBocca2" class="tabtestiBocca">
+            <p class="testiBocca">Ghigno enigmatico</p>
+            </div>
+
+            <div id="descrizioneBocca3" class="tabtestiBocca">
+            <p class="testiBocca">Smorfia corrucciata</p>
+            </div>
+
+            <div id="descrizioneBocca4" class="tabtestiBocca">
+            <p class="testiBocca">Smorfia pensosa</p>
+            </div>
+
+            <div id="descrizioneBocca5" class="tabtestiBocca">
+            <p class="testiBocca">Sorriso soddisfatto</p>
+            </div>
+
+            <div id="descrizioneBocca6" class="tabtestiBocca">
+            <p class="testiBocca">Ghigno malvagio</p>
+            </div>
+
+            <div id="descrizioneBocca7" class="tabtestiBocca">
+            <p class="testiBocca">Espressione indecifrabile</p>
+            </div>
+        </div>
+
+    <div class="interfacciaPunteggio">
+    <!-- Foletto -->
+        <div class="barraPunteggio" id="barra">
+            <div class="punteggioFollettoFaccia" id="punteggioFolletto1">
+            </div>
+            <div class="punteggioFollettoOcchi" id="punteggioFolletto2">
+            </div>
+            <div class="punteggioFollettoNaso" id="punteggioFolletto3">
+            </div>
+            <div class="punteggioFollettoBocca" id="punteggioFolletto4">
+            </div>
+        </div>
+
+    <!-- Drow -->
+        <div class="barraPunteggio" id="barra1">
+            <div class="punteggioDrowFaccia" id="punteggioDrow1">
+            </div>
+            <div class="punteggioDrowOcchi" id="punteggioDrow2">
+            </div>
+            <div class="punteggioDrowNaso" id="punteggioDrow3">
+            </div>
+            <div class="punteggioDrowBocca" id="punteggioDrow4">
+            </div>
+        </div>
+
+    <!-- Goblin -->
+        <div class="barraPunteggio" id="barra2">
+            <div class="punteggioGoblinFaccia" id="punteggioGoblin1">
+            </div>
+            <div class="punteggioGoblinOcchi" id="punteggioGoblin2">
+            </div>
+            <div class="punteggioGoblinNaso" id="punteggioGoblin3">
+            </div>
+            <div class="punteggioGoblinBocca" id="punteggioGoblin4">
+            </div>
+        </div>
+
+    <!-- Orco -->
+        <div class="barraPunteggio" id="barra3">
+            <div class="punteggioOrcoFaccia" id="punteggioOrco1">
+            </div>
+            <div class="punteggioOrcoOcchi" id="punteggioOrco2">
+            </div>
+            <div class="punteggioOrcoNaso" id="punteggioOrco3">
+            </div>
+            <div class="punteggioOrcoBocca" id="punteggioOrco4">
+            </div>
+        </div>
+
+    <!-- Vampiro -->
+        <div class="barraPunteggio" id="barra4">
+            <div class="punteggioVampiroFaccia" id="punteggioVampiro1">
+            </div>
+            <div class="punteggioVampiroOcchi" id="punteggioVampiro2">
+            </div>
+            <div class="punteggioVampiroNaso" id="punteggioVampiro3">
+            </div>
+            <div class="punteggioVampiroBocca" id="punteggioVampiro4">
+            </div>
+        </div>
+
+    <!-- Gnomo -->
+        <div class="barraPunteggio" id="barra5">
+            <div class="punteggioGnomoFaccia" id="punteggioGnomo1">
+            </div>
+            <div class="punteggioGnomoOcchi" id="punteggioGnomo2">
+            </div>
+            <div class="punteggioGnomoNaso" id="punteggioGnomo3">
+            </div>
+            <div class="punteggioGnomoBocca" id="punteggioGnomo4">
+            </div>
+        </div>
+
+    <!-- Troll -->
+        <div class="barraPunteggio" id="barra6">
+            <div class="punteggioTrollFaccia" id="punteggioTroll1">
+            </div>
+            <div class="punteggioTrollOcchi" id="punteggioTroll2">
+            </div>
+            <div class="punteggioTrollNaso" id="punteggioTroll3">
+            </div>
+            <div class="punteggioTrollBocca" id="punteggioTroll4">
+            </div>
+        </div>
+
+    <!-- Elfo -->
+        <div class="barraPunteggio" id="barra7">
+            <div class="punteggioElfoFaccia" id="punteggioElfo1">
+            </div>
+            <div class="punteggioElfoOcchi" id="punteggioElfo2">
+            </div>
+            <div class="punteggioElfoNaso" id="punteggioElfo3">
+            </div>
+            <div class="punteggioElfoBocca" id="punteggioElfo4">
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERFACCIA OPZIONI -->
+        <div class="interfaccia">
+
+    <!-- pulsanti tab menu principale -->
+            <div class="tab">
+                <button class="tab button" onclick="scegliElemento(event, 'volto')">VOLTO</button>
+                <button class="tab button" onclick="scegliElemento(event, 'occhi')">OCCHI</button>
+                <button class="tab button" onclick="scegliElemento(event, 'naso')">NASO</button>
+                <button class="tab button" onclick="scegliElemento(event, 'bocca')">BOCCA</button>
+            </div>
+
+    <!-- finestra VOLTO -->
+            <div id="volto" class="tabcontent">
+                <div class="tab">
+                    <button class="pulsante1" onclick="scegliElemento(event, 'x')">X</button>
+                </div>
+
+                <button id="v1" class="pulsante1"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia0'),
+                compareBarraFolletto(event, 'barra'),
+                comparePunteggioFollettoFaccia(event, 'punteggioFolletto1')">
+                <img src="assets/pulsante_faccia_0.png" class="pulsante0">
+                </button>
+
+                <button id="v2" class="pulsante1"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia1')
+                compareBarraDrow(event, 'barra1'),
+                comparePunteggioDrowFaccia(event, 'punteggioDrow1')">
+                    <img src="assets/pulsante_faccia_1.png" class="pulsante0">
+                </button>
+
+                <button id="v3" class="pulsante1"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia2')
+                compareBarraGoblin(event, 'barra2')
+                comparePunteggioGoblinFaccia(event, 'punteggioGoblin1')">
+                    <img src="assets/pulsante_faccia_2.png" class="pulsante0">
+                </button>
+
+                <button id="v4" class="pulsante1"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia3')
+                compareBarraOrco(event, 'barra3')
+                comparePunteggioOrcoFaccia(event, 'punteggioOrco1')">
+                    <img src="assets/pulsante_faccia_3.png" class="pulsante0">
+                </button>
+
+                <button id="v5" class="pulsante1"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia4')
+                compareBarraVampiro(event, 'barra4')
+                comparePunteggioVampiroFaccia(event, 'punteggioVampiro1')">
+                    <img src="assets/pulsante_faccia_4.png" class="pulsante0">
+                </button>
+
+                <button id="v6" class="pulsante1"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia5')
+                compareBarraGnomo(event, 'barra5')
+                comparePunteggioGnomoFaccia(event, 'punteggioGnomo1')">
+                    <img src="assets/pulsante_faccia_5.png" class="pulsante0">
+                </button>     
+
+                <button id="v7" class="pulsante1"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia6')
+                compareBarraTroll(event, 'barra6')
+                comparePunteggioTrollFaccia(event, 'punteggioTroll1')">
+                    <img src="assets/pulsante_faccia_6.png" class="pulsante0">
+                </button>
+
+                <button id="v8" class="pulsante1"
+                onclick="compareTestoFaccia(event, 'descrizioneFaccia7')
+                compareBarraElfo(event, 'barra7')
+                comparePunteggioElfoFaccia(event, 'punteggioElfo1')">
+                    <img src="assets/pulsante_faccia_7.png" class="pulsante0">
+                </button>
+
+                <!-- colore pelle -->
+                    <label for="#input-pelle">COLORE</label>
+                    <input id="input-pelle" type="range" step="1" value="0" min="0" max="7">
+            </div>
+
+    <!-- finestra OCCHI -->
+            <div id="occhi" class="tabcontent">
+                <div class="tab">
+                    <button class="pulsante1" onclick="scegliElemento(event, 'x')">X</button>
+                </div>
+                
+                <button id="v9" class="pulsante1"
+                onclick="compareTestoOcchi(event, 'descrizioneOcchi0'),
+                compareBarraFolletto(event, 'barra'),
+                comparePunteggioFollettoOcchi(event, 'punteggioFolletto2')">
+                    <img src="assets/pulsante_occhi_0.png" class="pulsante0">
+
+                </button>
+                <button id="v10" class="pulsante1"
+                onclick="compareTestoOcchi(event, 'descrizioneOcchi1')
+                compareBarraDrow(event, 'barra1')
+                comparePunteggioDrowOcchi(event, 'punteggioDrow2')">
+                    <img src="assets/pulsante_occhi_1.png" class="pulsante0">
+                </button>
+
+                <button id="v11" class="pulsante1"
+                onclick="compareTestoOcchi(event, 'descrizioneOcchi2')
+                compareBarraGoblin(event, 'barra2')
+                comparePunteggioGoblinOcchi(event, 'punteggioGoblin2')">
+                    <img src="assets/pulsante_occhi_2.png" class="pulsante0">
+                </button>
+
+                <button id="v12" class="pulsante1"
+                onclick="compareTestoOcchi(event, 'descrizioneOcchi3')
+                compareBarraOrco(event, 'barra3')
+                comparePunteggioOrcoOcchi(event, 'punteggioOrco2')">
+                    <img src="assets/pulsante_occhi_3.png" class="pulsante0">
+                </button>
+
+                <button id="v13" class="pulsante1"
+                onclick="compareTestoOcchi(event, 'descrizioneOcchi4')
+                compareBarraVampiro(event, 'barra4')
+                comparePunteggioVampiroOcchi(event, 'punteggioVampiro2')">
+                    <img src="assets/pulsante_occhi_4.png" class="pulsante0">
+                </button>
+
+                <button id="v14" class="pulsante1"
+                onclick="compareTestoOcchi(event, 'descrizioneOcchi5')
+                compareBarraGnomo(event, 'barra5')
+                comparePunteggioGnomoOcchi(event, 'punteggioGnomo2')">
+                    <img src="assets/pulsante_occhi_5.png" class="pulsante0">
+                </button>   
+
+                <button id="v15" class="pulsante1"
+                onclick="compareTestoOcchi(event, 'descrizioneOcchi6')
+                compareBarraTroll(event, 'barra6')
+                comparePunteggioTrollOcchi(event, 'punteggioTroll2')">
+                    <img src="assets/pulsante_occhi_6.png" class="pulsante0">
+                </button>
+
+                <button id="v16" class="pulsante1"
+                onclick="compareTestoOcchi(event, 'descrizioneOcchi7')
+                compareBarraElfo(event, 'barra7')
+                comparePunteggioElfoOcchi(event, 'punteggioElfo2')">
+                    <img src="assets/pulsante_occhi_7.png" class="pulsante0">
+                </button>
+            </div>
+              
+    <!-- finestra NASO -->
+            <div id="naso" class="tabcontent">
+                <div class="tab">
+                    <button class="pulsante1" onclick="scegliElemento(event, 'x')">X</button>
+                </div>
+
+                <button id="v17" class="pulsante1"
+                onclick="compareTestoNaso(event, 'descrizioneNaso0')
+                compareBarraFolletto(event, 'barra'),
+                comparePunteggioFollettoNaso(event, 'punteggioFolletto3')">
+                    <img src="assets/pulsante_naso_0.png" class="pulsante0">
+                </button>
+
+                <button id="v18" class="pulsante1"
+                onclick="compareTestoNaso(event, 'descrizioneNaso1')
+                compareBarraDrow(event, 'barra1')
+                comparePunteggioDrowNaso(event, 'punteggioDrow3')">
+                    <img src="assets/pulsante_naso_1.png" class="pulsante0">
+                </button>
+
+                <button id="v19" class="pulsante1"
+                onclick="compareTestoNaso(event, 'descrizioneNaso2')
+                compareBarraGoblin(event, 'barra2')
+                comparePunteggioGoblinNaso(event, 'punteggioGoblin3')">
+                    <img src="assets/pulsante_naso_2.png" class="pulsante0">
+                </button>
+
+                <button id="v20" class="pulsante1"
+                onclick="compareTestoNaso(event, 'descrizioneNaso3')
+                compareBarraOrco(event, 'barra3')
+                comparePunteggioOrcoNaso(event, 'punteggioOrco3')">
+                    <img src="assets/pulsante_naso_3.png" class="pulsante0">
+                </button>
+
+                <button id="v21" class="pulsante1"
+                onclick="compareTestoNaso(event, 'descrizioneNaso4')
+                compareBarraVampiro(event, 'barra4')
+                comparePunteggioVampiroNaso(event, 'punteggioVampiro3')">
+                    <img src="assets/pulsante_naso_4.png" class="pulsante0">
+                </button>
+
+                <button id="v22" class="pulsante1"
+                onclick="compareTestoNaso(event, 'descrizioneNaso5')
+                compareBarraGnomo(event, 'barra5')
+                comparePunteggioGnomoNaso(event, 'punteggioGnomo3')">
+                    <img src="assets/pulsante_naso_5.png" class="pulsante0">
+                </button>       
+
+                <button id="v23" class="pulsante1"
+                onclick="compareTestoNaso(event, 'descrizioneNaso6')
+                compareBarraTroll(event, 'barra6')
+                comparePunteggioTrollNaso(event, 'punteggioTroll3')">
+                    <img src="assets/pulsante_naso_6.png" class="pulsante0">
+                </button>
+
+                <button id="v24" class="pulsante1"
+                onclick="compareTestoNaso(event, 'descrizioneNaso7')
+                compareBarraElfo(event, 'barra7')
+                comparePunteggioElfoNaso(event, 'punteggioElfo3')">
+                    <img src="assets/pulsante_naso_7.png" class="pulsante0">
+                </button>
+              </div>
+
+    <!-- finestra BOCCA -->
+            <div id="bocca" class="tabcontent">
+                <div class="tab">
+                    <button class="pulsante1" onclick="scegliElemento(event, 'x')">X</button>
+                </div>
+
+                <button id="v25" class="pulsante1"
+                onclick="compareTestoBocca(event, 'descrizioneBocca0')
+                compareBarraFolletto(event, 'barra'),
+                comparePunteggioFollettoBocca(event, 'punteggioFolletto4')">
+                    <img src="assets/pulsante_bocca_0.png" class="pulsante0">
+                </button>
+
+                <button id="v26" class="pulsante1"
+                onclick="compareTestoBocca(event, 'descrizioneBocca1')
+                compareBarraDrow(event, 'barra1')
+                comparePunteggioDrowBocca(event, 'punteggioDrow4')">
+                    <img src="assets/pulsante_bocca_1.png" class="pulsante0">
+                </button>
+
+                <button id="v27" class="pulsante1"
+                onclick="compareTestoBocca(event, 'descrizioneBocca2')
+                compareBarraGoblin(event, 'barra2')
+                comparePunteggioGoblinBocca(event, 'punteggioGoblin4')">
+                    <img src="assets/pulsante_bocca_2.png" class="pulsante0">
+                </button>
+
+                <button id="v28" class="pulsante1"
+                onclick="compareTestoBocca(event, 'descrizioneBocca3')
+                compareBarraOrco(event, 'barra3')
+                comparePunteggioOrcoBocca(event, 'punteggioOrco4')">
+                    <img src="assets/pulsante_bocca_3.png" class="pulsante0">
+                </button>
+
+                <button id="v29" class="pulsante1"
+                onclick="compareTestoBocca(event, 'descrizioneBocca4')
+                compareBarraVampiro(event, 'barra4')
+                comparePunteggioVampiroBocca(event, 'punteggioVampiro4')">
+                    <img src="assets/pulsante_bocca_4.png" class="pulsante0">
+                </button>
+
+                <button id="v30" class="pulsante1"
+                onclick="compareTestoBocca(event, 'descrizioneBocca5')
+                compareBarraGnomo(event, 'barra5')
+                comparePunteggioGnomoBocca(event, 'punteggioGnomo4')">
+                    <img src="assets/pulsante_bocca_5.png" class="pulsante0">
+                </button>       
+
+                <button id="v31" class="pulsante1"
+                onclick="compareTestoBocca(event, 'descrizioneBocca6')
+                compareBarraTroll(event, 'barra6')
+                comparePunteggioTrollBocca(event, 'punteggioTroll4')">
+                    <img src="assets/pulsante_bocca_6.png" class="pulsante0">
+                </button>
+
+                <button id="v32" class="pulsante1"
+                onclick="compareTestoBocca(event, 'descrizioneBocca7')
+                compareBarraElfo(event, 'barra7')
+                comparePunteggioElfoBocca(event, 'punteggioElfo4')">
+                    <img src="assets/pulsante_bocca_7.png" class="pulsante0">
+                </button>
+              </div>
+
+    <!-- disegno avatar -->
+            <div id="contenitore">
+                <div id="test_1"></div>
+                <div id="test_2"></div>
+            </div>
+        </div>
+
+    <!-- INTERFACCIA HOME -->
+        <div class="interfaccia2">
+            <div class="tab">
+                <button class="pulsante1"
+                >MENU HOME
+                </button>
+            </div>
+
+            <div class="tab">
+                <button class="pulsante1"
+                >download JPG
+                </button>
+            </div>
+        </div>
+
+    <!-- colore pelle -->
+   <script>
+    //colore
+        document.querySelector("#input-pelle").addEventListener("input", function(e){
+        		const v = e.target.value
+	            const immagine_pelle = document.querySelector(".pelle img")
+	            immagine_pelle.src = "assets/pelle_" + v + ".png"
+			})
+    </script>
+
+    <!-- seleziona pezzi AVATAR -->
+    <script type="text/javascript">
+
+        // seleziona un attributo tramite bottone e cambia l'immagine di sfondo
+        // VOLTO
+            const src = document.getElementById("faccia");
+            const b1 = document.getElementById("v1")
+            b1.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_0.png)"
+                console.log("test")
+            })
+
+            const b2 = document.getElementById("v2")
+            b2.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_1.png)"
+                console.log("test")
+            })
+
+            const b3 = document.getElementById("v3")
+            b3.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_2.png)"
+                console.log("test")
+            })
+
+            const b4 = document.getElementById("v4")
+            b4.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_3.png)"
+                console.log("test")
+            })
+
+            const b5 = document.getElementById("v5")
+            b5.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_4.png)"
+                console.log("test")
+            })
+
+            const b6 = document.getElementById("v6")
+            b6.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_5.png)"
+                console.log("test")
+            })
+
+            const b7 = document.getElementById("v7")
+            b7.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_6.png)"
+                console.log("test")
+            })
+
+            const b8 = document.getElementById("v8")
+            b8.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_7.png)"
+                console.log("test")
+            })
+
+        // OCCHI
+            const cercaOcchi = document.getElementById("occhio");
+            const b9 = document.getElementById("v9")
+            b9.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_0.png)"
+                console.log("test")
+            })
+
+            const b10 = document.getElementById("v10")
+            b10.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_1.png)"
+                console.log("test")
+            })
+
+            const b11 = document.getElementById("v11")
+            b11.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_2.png)"
+                console.log("test")
+            })
+
+            const b12 = document.getElementById("v12")
+            b12.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_3.png)"
+                console.log("test")
+            })
+
+            const b13 = document.getElementById("v13")
+            b13.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_4.png)"
+                console.log("test")
+            })
+
+            const b14 = document.getElementById("v14")
+            b14.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_5.png)"
+                console.log("test")
+            })
+
+            const b15 = document.getElementById("v15")
+            b15.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_6.png)"
+                console.log("test")
+            })
+
+            const b16 = document.getElementById("v16")
+            b16.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_7.png)"
+                console.log("test")
+            })
+
+        // NASO
+            const cercaNaso = document.getElementById("nasi");
+            const b17 = document.getElementById("v17")
+            b17.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_0.png)"
+                console.log("test")
+            })
+
+            const b18 = document.getElementById("v18")
+            b18.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_1.png)"
+                console.log("test")
+            })
+
+            const b19 = document.getElementById("v19")
+            b19.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_2.png)"
+                console.log("test")
+            })
+
+            const b20 = document.getElementById("v20")
+            b20.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_3.png)"
+                console.log("test")
+            })
+
+            const b21 = document.getElementById("v21")
+            b21.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_4.png)"
+                console.log("test")
+            })
+
+            const b22 = document.getElementById("v22")
+            b22.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_5.png)"
+                console.log("test")
+            })
+
+            const b23 = document.getElementById("v23")
+            b23.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_6.png)"
+                console.log("test")
+            })
+
+            const b24 = document.getElementById("v24")
+            b24.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_7.png)"
+                console.log("test")
+            })
+
+        // BOCCA
+            const cercaBocca = document.getElementById("sorriso");
+            const b25 = document.getElementById("v25")
+            b25.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_0.png)"
+                console.log("test")
+            })
+
+            const b26 = document.getElementById("v26")
+            b26.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_1.png)"
+                console.log("test")
+            })
+
+            const b27 = document.getElementById("v27")
+            b27.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_2.png)"
+                console.log("test")
+            })
+
+            const b28 = document.getElementById("v28")
+            b28.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_3.png)"
+                console.log("test")
+            })
+
+            const b29 = document.getElementById("v29")
+            b29.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_4.png)"
+                console.log("test")
+            })
+
+            const b30 = document.getElementById("v30")
+            b30.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_5.png)"
+                console.log("test")
+            })
+
+            const b31 = document.getElementById("v31")
+            b31.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_6.png)"
+                console.log("test")
+            })
+
+            const b32 = document.getElementById("v32")
+            b32.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_7.png)"
+                console.log("test")
+            })
+    </script>
+
+    <!-- seleziona AVATAR intero-->
+    <script type="text/javascript">
+        //FOLLETTO
+            const bFolletto = document.getElementById("vFolletto")
+            bFolletto.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_0.png)"
+                console.log("test")
+            })
+            bFolletto.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_0.png)"
+                console.log("test")   
+            })
+            bFolletto.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_0.png)"
+                console.log("test")   
+            })
+            bFolletto.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_0.png)"
+                console.log("test")   
+            })
+
+        //DROW
+            const bDrow = document.getElementById("vDrow")
+            bDrow.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_1.png)"
+                console.log("test")
+            })
+            bDrow.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_1.png)"
+                console.log("test")   
+            })
+            bDrow.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_1.png)"
+                console.log("test")   
+            })
+            bDrow.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_1.png)"
+                console.log("test")   
+            })
+
+        //GOBLIN
+            const bGoblin = document.getElementById("vGoblin")
+            bGoblin.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_2.png)"
+                console.log("test")
+            })
+            bGoblin.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_2.png)"
+                console.log("test")   
+            })
+            bGoblin.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_2.png)"
+                console.log("test")   
+            })
+            bGoblin.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_2.png)"
+                console.log("test")   
+            })
+
+        //ORCO
+            const bOrco = document.getElementById("vOrco")
+            bOrco.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_3.png)"
+                console.log("test")
+            })
+            bOrco.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_3.png)"
+                console.log("test")   
+            })
+            bOrco.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_3.png)"
+                console.log("test")   
+            })
+            bOrco.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_3.png)"
+                console.log("test")   
+            })
+
+        //VAMPIRO
+            const bVampiro = document.getElementById("vVampiro")
+            bVampiro.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_4.png)"
+                console.log("test")
+            })
+            bVampiro.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_4.png)"
+                console.log("test")   
+            })
+            bVampiro.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_4.png)"
+                console.log("test")   
+            })
+            bVampiro.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_4.png)"
+                console.log("test")   
+            })
+
+        //GNOMO
+            const bGnomo = document.getElementById("vGnomo")
+            bGnomo.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_5.png)"
+                console.log("test")
+            })
+            bGnomo.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_5.png)"
+                console.log("test")   
+            })
+            bGnomo.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_5.png)"
+                console.log("test")   
+            })
+            bGnomo.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_5.png)"
+                console.log("test")   
+            })
+
+        //TROLL
+            const bTroll = document.getElementById("vTroll")
+            bTroll.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_6.png)"
+                console.log("test")
+            })
+            bTroll.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_6.png)"
+                console.log("test")   
+            })
+            bTroll.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_6.png)"
+                console.log("test")   
+            })
+            bTroll.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_6.png)"
+                console.log("test")   
+            })
+
+        //ELFO
+            const bElfo = document.getElementById("vElfo")
+            bElfo.addEventListener("click", function(e) {
+                src.style.backgroundImage="url(assets/faccia_7.png)"
+                console.log("test")
+            })
+            bElfo.addEventListener("click", function(e) {
+                cercaOcchi.style.backgroundImage="url(assets/occhi_7.png)"
+                console.log("test")   
+            })
+            bElfo.addEventListener("click", function(e) {
+                cercaNaso.style.backgroundImage="url(assets/naso_7.png)"
+                console.log("test")   
+            })
+            bElfo.addEventListener("click", function(e) {
+                cercaBocca.style.backgroundImage="url(assets/bocca_7.png)"
+                console.log("test")   
+            })
+
+    </script>
+
+    <!-- testi DESCRIZIONE -->
+    <script type="text/javascript">
+            function scegliElemento(evt, selezionaElemento) {
+            // Declare all variables
+                var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(selezionaElemento).style.display = "block";
+            evt.currentTarget.className += "active";
+            }
+
+    // INTERFACCIA DESCRIZIONI
+        function compareInterfacciaTesto(evt, compareInterfaccia) {
+            var i, interfacciaTesto, tablinks;
+
+            document.getElementById(compareInterfaccia).style.display = "block";
+        }
+    // testi FACCIA descrizioni
+            function compareTestoFaccia(evt, compareDescrizione) {
+            // Dichiara tutte le variabili
+                var i, tabtestiFaccia, tablinks;
+
+            // Nasconde gli altri elementi con class="tabtestiFaccia"
+            tabtestiFaccia = document.getElementsByClassName("tabtestiFaccia");
+            for (i = 0; i < tabtestiFaccia.length; i++) {
+                tabtestiFaccia[i].style.display = "none";
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(compareDescrizione).style.display = "block";
+            }
+
+    // testi OCCHI descrizioni
+            function compareTestoOcchi(evt, compareDescrizione) {
+                var i, tabtestiOcchi, tablinks;
+
+            tabtestiOcchi = document.getElementsByClassName("tabtestiOcchi");
+            for (i = 0; i < tabtestiOcchi.length; i++) {
+                tabtestiOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(compareDescrizione).style.display = "block";
+            }
+
+    // testi NASO descrizioni
+            function compareTestoNaso(evt, compareDescrizione) {
+                var i, tabtestiNaso, tablinks;
+
+            tabtestiNaso = document.getElementsByClassName("tabtestiNaso");
+            for (i = 0; i < tabtestiNaso.length; i++) {
+                tabtestiNaso[i].style.display = "none";
+            }
+
+            document.getElementById(compareDescrizione).style.display = "block";
+            }
+
+    // testi BOCCA descrizioni
+            function compareTestoBocca(evt, compareDescrizione) {
+                var i, tabtestiBocca, tablinks;
+
+            tabtestiBocca = document.getElementsByClassName("tabtestiBocca");
+            for (i = 0; i < tabtestiBocca.length; i++) {
+                tabtestiBocca[i].style.display = "none";
+            }
+
+            document.getElementById(compareDescrizione).style.display = "block";
+            }
+    </script>
+
+    <!-- PUNTEGGIO -->
+    <script type="text/javascript">
+
+    // punteggio FOLLETTO
+        //FACCIA
+        function compareBarraFolletto(evt, appareBarraFolletto) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraFolletto).style.display = "block";
+        }
+
+        function comparePunteggioFollettoFaccia(evt, apparePunteggioFollettoFaccia) {
+            var i, punteggioFollettoFaccia, tablinks;
+
+        // Nasconde gli altri punteggi FACCIA
+            punteggioDrowFaccia = document.getElementsByClassName("punteggioDrowFaccia");
+            for (i = 0; i < punteggioDrowFaccia.length; i++) {
+                punteggioDrowFaccia[i].style.display = "none";
+            }
+
+            punteggioGoblinFaccia = document.getElementsByClassName("punteggioGoblinFaccia");
+            for (i = 0; i < punteggioGoblinFaccia.length; i++) {
+                punteggioGoblinFaccia[i].style.display = "none";
+            }
+
+            punteggioOrcoFaccia = document.getElementsByClassName("punteggioOrcoFaccia");
+            for (i = 0; i < punteggioOrcoFaccia.length; i++) {
+                punteggioOrcoFaccia[i].style.display = "none";
+            }
+
+            punteggioVampiroFaccia = document.getElementsByClassName("punteggioVampiroFaccia");
+            for (i = 0; i < punteggioVampiroFaccia.length; i++) {
+                punteggioVampiroFaccia[i].style.display = "none";
+            }
+
+            punteggioGnomoFaccia = document.getElementsByClassName("punteggioGnomoFaccia");
+            for (i = 0; i < punteggioGnomoFaccia.length; i++) {
+                punteggioGnomoFaccia[i].style.display = "none";
+            }
+
+            punteggioTrollFaccia = document.getElementsByClassName("punteggioTrollFaccia");
+            for (i = 0; i < punteggioTrollFaccia.length; i++) {
+                punteggioTrollFaccia[i].style.display = "none";
+            }
+
+            punteggioElfoFaccia = document.getElementsByClassName("punteggioElfoFaccia");
+            for (i = 0; i < punteggioElfoFaccia.length; i++) {
+                punteggioElfoFaccia[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioFollettoFaccia).style.display = "block";
+        }
+
+        //OCCHI
+        function compareBarraFolletto(evt, appareBarraFolletto) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraFolletto).style.display = "block";
+        }
+        function comparePunteggioFollettoOcchi(evt, apparePunteggioFollettoOcchi) {
+            var i, punteggioFollettoOcchi, tablinks;
+
+        // Nasconde gli altri punteggi OCCHI
+            punteggioDrowOcchi = document.getElementsByClassName("punteggioDrowOcchi");
+            for (i = 0; i < punteggioDrowOcchi.length; i++) {
+                punteggioDrowOcchi[i].style.display = "none";
+            }
+
+            punteggioGoblinOcchi = document.getElementsByClassName("punteggioGoblinOcchi");
+            for (i = 0; i < punteggioGoblinOcchi.length; i++) {
+                punteggioGoblinOcchi[i].style.display = "none";
+            }
+
+            punteggioOrcoOcchi = document.getElementsByClassName("punteggioOrcoOcchi");
+            for (i = 0; i < punteggioOrcoOcchi.length; i++) {
+                punteggioOrcoOcchi[i].style.display = "none";
+            }
+
+            punteggioVampiroOcchi = document.getElementsByClassName("punteggioVampiroOcchi");
+            for (i = 0; i < punteggioVampiroOcchi.length; i++) {
+                punteggioVampiroOcchi[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoOcchi");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollOcchi");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoOcchi = document.getElementsByClassName("punteggioElfoOcchi");
+            for (i = 0; i < punteggioElfoOcchi.length; i++) {
+                punteggioElfoOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioFollettoOcchi).style.display = "block";
+            }
+
+        //NASO
+        function compareBarraFolletto(evt, appareBarraFolletto) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraFolletto).style.display = "block";
+        }
+
+        function comparePunteggioFollettoNaso(evt, apparePunteggioFollettoNaso) {
+            var i, punteggioFollettoNaso, tablinks;
+
+        // Nasconde gli altri punteggi NASO
+            punteggioDrowNaso = document.getElementsByClassName("punteggioDrowNaso");
+            for (i = 0; i < punteggioDrowNaso.length; i++) {
+                punteggioDrowNaso[i].style.display = "none";
+            }
+
+            punteggioGoblinNaso = document.getElementsByClassName("punteggioGoblinNaso");
+            for (i = 0; i < punteggioGoblinNaso.length; i++) {
+                punteggioGoblinNaso[i].style.display = "none";
+            }
+
+            punteggioOrcoNaso = document.getElementsByClassName("punteggioOrcoNaso");
+            for (i = 0; i < punteggioOrcoNaso.length; i++) {
+                punteggioOrcoNaso[i].style.display = "none";
+            }
+
+            punteggioVampiroNaso = document.getElementsByClassName("punteggioVampiroNaso");
+            for (i = 0; i < punteggioVampiroNaso.length; i++) {
+                punteggioVampiroNaso[i].style.display = "none";
+            }
+
+            punteggioGnomoNaso = document.getElementsByClassName("punteggioGnomoNaso");
+            for (i = 0; i < punteggioGnomoNaso.length; i++) {
+                punteggioGnomoNaso[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollNaso");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoNaso = document.getElementsByClassName("punteggioElfoNaso");
+            for (i = 0; i < punteggioElfoNaso.length; i++) {
+                punteggioElfoNaso[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioFollettoNaso).style.display = "block";
+        }
+
+        //BOCCA
+        function compareBarraFolletto(evt, appareBarraFolletto) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraFolletto).style.display = "block";
+        }
+
+        function comparePunteggioFollettoBocca(evt, apparePunteggioFollettoBocca) {
+            var i, punteggioFollettoBocca, tablinks;
+
+        // Nasconde gli altri punteggi BOCCA
+            punteggioDrowBocca = document.getElementsByClassName("punteggioDrowBocca");
+            for (i = 0; i < punteggioDrowBocca.length; i++) {
+                punteggioDrowBocca[i].style.display = "none";
+            }
+
+            punteggioGoblinBocca = document.getElementsByClassName("punteggioGoblinBocca");
+            for (i = 0; i < punteggioGoblinBocca.length; i++) {
+                punteggioGoblinBocca[i].style.display = "none";
+            }
+
+            punteggioOrcoBocca = document.getElementsByClassName("punteggioOrcoBocca");
+            for (i = 0; i < punteggioOrcoBocca.length; i++) {
+                punteggioOrcoBocca[i].style.display = "none";
+            }
+
+            punteggioVampiroBocca = document.getElementsByClassName("punteggioVampiroBocca");
+            for (i = 0; i < punteggioVampiroBocca.length; i++) {
+                punteggioVampiroBocca[i].style.display = "none";
+            }
+
+            punteggioGnomoBocca = document.getElementsByClassName("punteggioGnomoBocca");
+            for (i = 0; i < punteggioGnomoBocca.length; i++) {
+                punteggioGnomoBocca[i].style.display = "none";
+            }
+
+            punteggioTrollBocca = document.getElementsByClassName("punteggioTrollBocca");
+            for (i = 0; i < punteggioTrollBocca.length; i++) {
+                punteggioTrollBocca[i].style.display = "none";
+            }
+
+            punteggioElfoBocca = document.getElementsByClassName("punteggioElfoBocca");
+            for (i = 0; i < punteggioElfoBocca.length; i++) {
+                punteggioElfoBocca[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioFollettoBocca).style.display = "block";
+        } 
+
+
+    // punteggio DROW
+        function compareBarraDrow(evt, appareBarraDrow) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraDrow).style.display = "block";
+        }
+        
+        //FACCIA
+        function comparePunteggioDrowFaccia(evt, apparePunteggioDrowFaccia) {
+            var i, punteggioDrowFaccia, tablinks;
+
+        // Nasconde gli altri punteggi FACCIA
+            punteggioFollettoFaccia = document.getElementsByClassName("punteggioFollettoFaccia");
+            for (i = 0; i < punteggioFollettoFaccia.length; i++) {
+                punteggioFollettoFaccia[i].style.display = "none";
+            }
+
+            punteggioGoblinFaccia = document.getElementsByClassName("punteggioGoblinFaccia");
+            for (i = 0; i < punteggioGoblinFaccia.length; i++) {
+                punteggioGoblinFaccia[i].style.display = "none";
+            }
+
+            punteggioOrcoFaccia = document.getElementsByClassName("punteggioOrcoFaccia");
+            for (i = 0; i < punteggioOrcoFaccia.length; i++) {
+                punteggioOrcoFaccia[i].style.display = "none";
+            }
+
+            punteggioVampiroFaccia = document.getElementsByClassName("punteggioVampiroFaccia");
+            for (i = 0; i < punteggioVampiroFaccia.length; i++) {
+                punteggioVampiroFaccia[i].style.display = "none";
+            }
+
+            punteggioGnomoFaccia = document.getElementsByClassName("punteggioGnomoFaccia");
+            for (i = 0; i < punteggioGnomoFaccia.length; i++) {
+                punteggioGnomoFaccia[i].style.display = "none";
+            }
+
+            punteggioTrollFaccia = document.getElementsByClassName("punteggioTrollFaccia");
+            for (i = 0; i < punteggioTrollFaccia.length; i++) {
+                punteggioTrollFaccia[i].style.display = "none";
+            }
+
+            punteggioElfoFaccia = document.getElementsByClassName("punteggioElfoFaccia");
+            for (i = 0; i < punteggioElfoFaccia.length; i++) {
+                punteggioElfoFaccia[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioDrowFaccia).style.display = "block";
+            }
+
+        //OCCHI
+        function compareBarraDrow(evt, appareBarraDrow) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraDrow).style.display = "block";
+        }
+
+        function comparePunteggioDrowOcchi(evt, apparePunteggioDrowOcchi) {
+            var i, punteggioDrowOcchi, tablinks;
+        
+        // Nasconde gli altri punteggi OCCHI
+            punteggioFollettoOcchi = document.getElementsByClassName("punteggioFollettoOcchi");
+            for (i = 0; i < punteggioFollettoOcchi.length; i++) {
+                punteggioFollettoOcchi[i].style.display = "none";
+            }
+
+            punteggioGoblinOcchi = document.getElementsByClassName("punteggioGoblinOcchi");
+            for (i = 0; i < punteggioGoblinOcchi.length; i++) {
+                punteggioGoblinOcchi[i].style.display = "none";
+            }
+
+            punteggioOrcoOcchi = document.getElementsByClassName("punteggioOrcoOcchi");
+            for (i = 0; i < punteggioOrcoOcchi.length; i++) {
+                punteggioOrcoOcchi[i].style.display = "none";
+            }
+
+            punteggioVampiroOcchi = document.getElementsByClassName("punteggioVampiroOcchi");
+            for (i = 0; i < punteggioVampiroOcchi.length; i++) {
+                punteggioVampiroOcchi[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoOcchi");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollOcchi");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoOcchi = document.getElementsByClassName("punteggioElfoOcchi");
+            for (i = 0; i < punteggioElfoOcchi.length; i++) {
+                punteggioElfoOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioDrowOcchi).style.display = "block";
+        }
+
+        //NASO
+        function compareBarraDrow(evt, appareBarraDrow) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraDrow).style.display = "block";
+        }
+
+        function comparePunteggioDrowNaso(evt, apparePunteggioDrowNaso) {
+            var i, punteggioDrowNaso, tablinks;
+
+        // Nasconde gli altri punteggi NASO
+            punteggioFollettoNaso = document.getElementsByClassName("punteggioFollettoNaso");
+            for (i = 0; i < punteggioFollettoNaso.length; i++) {
+                punteggioFollettoNaso[i].style.display = "none";
+            }
+
+            punteggioGoblinNaso = document.getElementsByClassName("punteggioGoblinNaso");
+            for (i = 0; i < punteggioGoblinNaso.length; i++) {
+                punteggioGoblinNaso[i].style.display = "none";
+            }
+
+            punteggioOrcoNaso = document.getElementsByClassName("punteggioOrcoNaso");
+            for (i = 0; i < punteggioOrcoNaso.length; i++) {
+                punteggioOrcoNaso[i].style.display = "none";
+            }
+
+            punteggioVampiroNaso = document.getElementsByClassName("punteggioVampiroNaso");
+            for (i = 0; i < punteggioVampiroNaso.length; i++) {
+                punteggioVampiroNaso[i].style.display = "none";
+            }
+
+            punteggioGnomoNaso = document.getElementsByClassName("punteggioGnomoNaso");
+            for (i = 0; i < punteggioGnomoNaso.length; i++) {
+                punteggioGnomoNaso[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollNaso");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoNaso = document.getElementsByClassName("punteggioElfoNaso");
+            for (i = 0; i < punteggioElfoNaso.length; i++) {
+                punteggioElfoNaso[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioDrowNaso).style.display = "block";
+        }
+
+        //BOCCA
+        function compareBarraDrow(evt, appareBarraDrow) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraDrow).style.display = "block";
+        }
+
+        function comparePunteggioDrowBocca(evt, apparePunteggioDrowBocca) {
+            var i, punteggioDrowBocca, tablinks;
+
+        // Nasconde gli altri punteggi BOCCA
+            punteggioFollettoBocca = document.getElementsByClassName("punteggioFollettoBocca");
+            for (i = 0; i < punteggioFollettoBocca.length; i++) {
+                punteggioFollettoBocca[i].style.display = "none";
+            }
+
+            punteggioGoblinBocca = document.getElementsByClassName("punteggioGoblinBocca");
+            for (i = 0; i < punteggioGoblinBocca.length; i++) {
+                punteggioGoblinBocca[i].style.display = "none";
+            }
+
+            punteggioOrcoBocca = document.getElementsByClassName("punteggioOrcoBocca");
+            for (i = 0; i < punteggioOrcoBocca.length; i++) {
+                punteggioOrcoBocca[i].style.display = "none";
+            }
+
+            punteggioVampiroBocca = document.getElementsByClassName("punteggioVampiroBocca");
+            for (i = 0; i < punteggioVampiroBocca.length; i++) {
+                punteggioVampiroBocca[i].style.display = "none";
+            }
+
+            punteggioGnomoBocca = document.getElementsByClassName("punteggioGnomoBocca");
+            for (i = 0; i < punteggioGnomoBocca.length; i++) {
+                punteggioGnomoBocca[i].style.display = "none";
+            }
+
+            punteggioTrollBocca = document.getElementsByClassName("punteggioTrollBocca");
+            for (i = 0; i < punteggioTrollBocca.length; i++) {
+                punteggioTrollBocca[i].style.display = "none";
+            }
+
+            punteggioElfoBocca = document.getElementsByClassName("punteggioElfoBocca");
+            for (i = 0; i < punteggioElfoBocca.length; i++) {
+                punteggioElfoBocca[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioDrowBocca).style.display = "block";
+        } 
+
+    // punteggio GOBLIN
+        //FACCIA
+        function compareBarraGoblin(evt, appareBarraGoblin) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraGoblin).style.display = "block";
+        }
+
+        function comparePunteggioGoblinFaccia(evt, apparePunteggioGoblinFaccia) {
+            var i, punteggioGoblinFaccia, tablinks;
+
+        // Nasconde gli altri punteggi FACCIA
+            punteggioDrowFaccia = document.getElementsByClassName("punteggioDrowFaccia");
+            for (i = 0; i < punteggioDrowFaccia.length; i++) {
+                punteggioDrowFaccia[i].style.display = "none";
+            }
+
+            punteggioFollettoFaccia = document.getElementsByClassName("punteggioFollettoFaccia");
+            for (i = 0; i < punteggioFollettoFaccia.length; i++) {
+                punteggioFollettoFaccia[i].style.display = "none";
+            }
+
+            punteggioOrcoFaccia = document.getElementsByClassName("punteggioOrcoFaccia");
+            for (i = 0; i < punteggioOrcoFaccia.length; i++) {
+                punteggioOrcoFaccia[i].style.display = "none";
+            }
+
+            punteggioVampiroFaccia = document.getElementsByClassName("punteggioVampiroFaccia");
+            for (i = 0; i < punteggioVampiroFaccia.length; i++) {
+                punteggioVampiroFaccia[i].style.display = "none";
+            }
+
+            punteggioGnomoFaccia = document.getElementsByClassName("punteggioGnomoFaccia");
+            for (i = 0; i < punteggioGnomoFaccia.length; i++) {
+                punteggioGnomoFaccia[i].style.display = "none";
+            }
+
+            punteggioTrollFaccia = document.getElementsByClassName("punteggioTrollFaccia");
+            for (i = 0; i < punteggioTrollFaccia.length; i++) {
+                punteggioTrollFaccia[i].style.display = "none";
+            }
+
+            punteggioElfoFaccia = document.getElementsByClassName("punteggioElfoFaccia");
+            for (i = 0; i < punteggioElfoFaccia.length; i++) {
+                punteggioElfoFaccia[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioGoblinFaccia).style.display = "block";
+        }
+        //OCCHI
+        function compareBarraGoblin(evt, appareBarraGoblin) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraGoblin).style.display = "block";
+        }
+        function comparePunteggioGoblinOcchi(evt, apparePunteggioGoblinOcchi) {
+            var i, punteggioGoblinOcchi, tablinks;
+        
+        // Nasconde gli altri punteggi OCCHI
+            punteggioFollettoOcchi = document.getElementsByClassName("punteggioFollettoOcchi");
+            for (i = 0; i < punteggioFollettoOcchi.length; i++) {
+                punteggioFollettoOcchi[i].style.display = "none";
+            }
+
+            punteggioDrowOcchi = document.getElementsByClassName("punteggioDrowOcchi");
+            for (i = 0; i < punteggioDrowOcchi.length; i++) {
+                punteggioDrowOcchi[i].style.display = "none";
+            }
+
+            punteggioOrcoOcchi = document.getElementsByClassName("punteggioOrcoOcchi");
+            for (i = 0; i < punteggioOrcoOcchi.length; i++) {
+                punteggioOrcoOcchi[i].style.display = "none";
+            }
+
+            punteggioVampiroOcchi = document.getElementsByClassName("punteggioVampiroOcchi");
+            for (i = 0; i < punteggioVampiroOcchi.length; i++) {
+                punteggioVampiroOcchi[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoOcchi");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollOcchi");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoOcchi = document.getElementsByClassName("punteggioElfoOcchi");
+            for (i = 0; i < punteggioElfoOcchi.length; i++) {
+                punteggioElfoOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioGoblinOcchi).style.display = "block";
+        }
+
+        //NASO
+        function compareBarraGoblin(evt, appareBarraGoblin) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraGoblin).style.display = "block";
+        }
+
+        function comparePunteggioGoblinNaso(evt, apparePunteggioGoblinNaso) {
+            var i, punteggioGoblinNaso, tablinks;
+
+        // Nasconde gli altri punteggi NASO
+            punteggioDrowNaso = document.getElementsByClassName("punteggioDrowNaso");
+            for (i = 0; i < punteggioDrowNaso.length; i++) {
+                punteggioDrowNaso[i].style.display = "none";
+            }
+
+            punteggioFollettoNaso = document.getElementsByClassName("punteggioFollettoNaso");
+            for (i = 0; i < punteggioFollettoNaso.length; i++) {
+                punteggioFollettoNaso[i].style.display = "none";
+            }
+
+            punteggioOrcoNaso = document.getElementsByClassName("punteggioOrcoNaso");
+            for (i = 0; i < punteggioOrcoNaso.length; i++) {
+                punteggioOrcoNaso[i].style.display = "none";
+            }
+
+            punteggioVampiroNaso = document.getElementsByClassName("punteggioVampiroNaso");
+            for (i = 0; i < punteggioVampiroNaso.length; i++) {
+                punteggioVampiroNaso[i].style.display = "none";
+            }
+
+            punteggioGnomoNaso = document.getElementsByClassName("punteggioGnomoNaso");
+            for (i = 0; i < punteggioGnomoNaso.length; i++) {
+                punteggioGnomoNaso[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollNaso");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoNaso = document.getElementsByClassName("punteggioElfoNaso");
+            for (i = 0; i < punteggioElfoNaso.length; i++) {
+                punteggioElfoNaso[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioGoblinNaso).style.display = "block";
+        }
+
+        //BOCCA
+        function compareBarraGoblin(evt, appareBarraGoblin) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraGoblin).style.display = "block";
+        }
+
+        function comparePunteggioGoblinBocca(evt, apparePunteggioGoblinBocca) {
+            var i, punteggioGoblinBocca, tablinks;
+
+        // Nasconde gli altri punteggi BOCCA
+            punteggioDrowBocca = document.getElementsByClassName("punteggioDrowBocca");
+            for (i = 0; i < punteggioDrowBocca.length; i++) {
+                punteggioDrowBocca[i].style.display = "none";
+            }
+
+            punteggioFollettoBocca = document.getElementsByClassName("punteggioFollettoBocca");
+            for (i = 0; i < punteggioFollettoBocca.length; i++) {
+                punteggioFollettoBocca[i].style.display = "none";
+            }
+
+            punteggioOrcoBocca = document.getElementsByClassName("punteggioOrcoBocca");
+            for (i = 0; i < punteggioOrcoBocca.length; i++) {
+                punteggioOrcoBocca[i].style.display = "none";
+            }
+
+            punteggioVampiroBocca = document.getElementsByClassName("punteggioVampiroBocca");
+            for (i = 0; i < punteggioVampiroBocca.length; i++) {
+                punteggioVampiroBocca[i].style.display = "none";
+            }
+
+            punteggioGnomoBocca = document.getElementsByClassName("punteggioGnomoBocca");
+            for (i = 0; i < punteggioGnomoBocca.length; i++) {
+                punteggioGnomoBocca[i].style.display = "none";
+            }
+
+            punteggioTrollBocca = document.getElementsByClassName("punteggioTrollBocca");
+            for (i = 0; i < punteggioTrollBocca.length; i++) {
+                punteggioTrollBocca[i].style.display = "none";
+            }
+
+            punteggioElfoBocca = document.getElementsByClassName("punteggioElfoBocca");
+            for (i = 0; i < punteggioElfoBocca.length; i++) {
+                punteggioElfoBocca[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioGoblinBocca).style.display = "block";
+        }
+
+    // punteggio ORCO
+       //FACCIA
+       function compareBarraOrco(evt, appareBarraOrco) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraOrco).style.display = "block";
+        }
+
+        function comparePunteggioOrcoFaccia(evt, apparePunteggioOrcoFaccia) {
+            var i, punteggioOrcoFaccia, tablinks;
+
+        // Nasconde gli altri punteggi FACCIA
+            punteggioDrowFaccia = document.getElementsByClassName("punteggioDrowFaccia");
+            for (i = 0; i < punteggioDrowFaccia.length; i++) {
+                punteggioDrowFaccia[i].style.display = "none";
+            }
+
+            punteggioGoblinFaccia = document.getElementsByClassName("punteggioGoblinFaccia");
+            for (i = 0; i < punteggioGoblinFaccia.length; i++) {
+                punteggioGoblinFaccia[i].style.display = "none";
+            }
+
+            punteggioFollettoFaccia = document.getElementsByClassName("punteggioFollettoFaccia");
+            for (i = 0; i < punteggioFollettoFaccia.length; i++) {
+                punteggioFollettoFaccia[i].style.display = "none";
+            }
+
+            punteggioVampiroFaccia = document.getElementsByClassName("punteggioVampiroFaccia");
+            for (i = 0; i < punteggioVampiroFaccia.length; i++) {
+                punteggioVampiroFaccia[i].style.display = "none";
+            }
+
+            punteggioGnomoFaccia = document.getElementsByClassName("punteggioGnomoFaccia");
+            for (i = 0; i < punteggioGnomoFaccia.length; i++) {
+                punteggioGnomoFaccia[i].style.display = "none";
+            }
+
+            punteggioTrollFaccia = document.getElementsByClassName("punteggioTrollFaccia");
+            for (i = 0; i < punteggioTrollFaccia.length; i++) {
+                punteggioTrollFaccia[i].style.display = "none";
+            }
+
+            punteggioElfoFaccia = document.getElementsByClassName("punteggioElfoFaccia");
+            for (i = 0; i < punteggioElfoFaccia.length; i++) {
+                punteggioElfoFaccia[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioOrcoFaccia).style.display = "block";
+        }
+
+        //OCCHI
+        function compareBarraOrco(evt, appareBarraOrco) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraOrco).style.display = "block";
+        }
+        function comparePunteggioOrcoOcchi(evt, apparePunteggioOrcoOcchi) {
+            var i, punteggioOrcoOcchi, tablinks;
+
+        // Nasconde gli altri punteggi OCCHI
+            punteggioDrowOcchi = document.getElementsByClassName("punteggioDrowOcchi");
+            for (i = 0; i < punteggioDrowOcchi.length; i++) {
+                punteggioDrowOcchi[i].style.display = "none";
+            }
+
+            punteggioGoblinOcchi = document.getElementsByClassName("punteggioGoblinOcchi");
+            for (i = 0; i < punteggioGoblinOcchi.length; i++) {
+                punteggioGoblinOcchi[i].style.display = "none";
+            }
+
+            punteggioFollettoOcchi = document.getElementsByClassName("punteggioFollettoOcchi");
+            for (i = 0; i < punteggioFollettoOcchi.length; i++) {
+                punteggioFollettoOcchi[i].style.display = "none";
+            }
+
+            punteggioVampiroOcchi = document.getElementsByClassName("punteggioVampiroOcchi");
+            for (i = 0; i < punteggioVampiroOcchi.length; i++) {
+                punteggioVampiroOcchi[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoOcchi");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollOcchi");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoOcchi = document.getElementsByClassName("punteggioElfoOcchi");
+            for (i = 0; i < punteggioElfoOcchi.length; i++) {
+                punteggioElfoOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioOrcoOcchi).style.display = "block";
+        }
+
+        //NASO
+        function compareBarraOrco(evt, appareBarraOrco) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraOrco).style.display = "block";
+        }
+
+        function comparePunteggioOrcoNaso(evt, apparePunteggioOrcoNaso) {
+            var i, punteggioOrcoNaso, tablinks;
+
+        // Nasconde gli altri punteggi NASO
+            punteggioDrowNaso = document.getElementsByClassName("punteggioDrowNaso");
+            for (i = 0; i < punteggioDrowNaso.length; i++) {
+                punteggioDrowNaso[i].style.display = "none";
+            }
+
+            punteggioGoblinNaso = document.getElementsByClassName("punteggioGoblinNaso");
+            for (i = 0; i < punteggioGoblinNaso.length; i++) {
+                punteggioGoblinNaso[i].style.display = "none";
+            }
+
+            punteggioFollettoNaso = document.getElementsByClassName("punteggioFollettoNaso");
+            for (i = 0; i < punteggioFollettoNaso.length; i++) {
+                punteggioFollettoNaso[i].style.display = "none";
+            }
+
+            punteggioVampiroNaso = document.getElementsByClassName("punteggioVampiroNaso");
+            for (i = 0; i < punteggioVampiroNaso.length; i++) {
+                punteggioVampiroNaso[i].style.display = "none";
+            }
+
+            punteggioGnomoNaso = document.getElementsByClassName("punteggioGnomoNaso");
+            for (i = 0; i < punteggioGnomoNaso.length; i++) {
+                punteggioGnomoNaso[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollNaso");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoNaso = document.getElementsByClassName("punteggioElfoNaso");
+            for (i = 0; i < punteggioElfoNaso.length; i++) {
+                punteggioElfoNaso[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioOrcoNaso).style.display = "block";
+        }
+
+        //BOCCA
+        function compareBarraOrco(evt, appareBarraOrco) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraOrco).style.display = "block";
+        }
+
+        function comparePunteggioOrcoBocca(evt, apparePunteggioOrcoBocca) {
+            var i, punteggioOrcoBocca, tablinks;
+
+        // Nasconde gli altri punteggi BOCCA
+            punteggioDrowBocca = document.getElementsByClassName("punteggioDrowBocca");
+            for (i = 0; i < punteggioDrowBocca.length; i++) {
+                punteggioDrowBocca[i].style.display = "none";
+            }
+
+            punteggioGoblinBocca = document.getElementsByClassName("punteggioGoblinBocca");
+            for (i = 0; i < punteggioGoblinBocca.length; i++) {
+                punteggioGoblinBocca[i].style.display = "none";
+            }
+
+            punteggioFollettoBocca = document.getElementsByClassName("punteggioFollettoBocca");
+            for (i = 0; i < punteggioFollettoBocca.length; i++) {
+                punteggioFollettoBocca[i].style.display = "none";
+            }
+
+            punteggioVampiroBocca = document.getElementsByClassName("punteggioVampiroBocca");
+            for (i = 0; i < punteggioVampiroBocca.length; i++) {
+                punteggioVampiroBocca[i].style.display = "none";
+            }
+
+            punteggioGnomoBocca = document.getElementsByClassName("punteggioGnomoBocca");
+            for (i = 0; i < punteggioGnomoBocca.length; i++) {
+                punteggioGnomoBocca[i].style.display = "none";
+            }
+
+            punteggioTrollBocca = document.getElementsByClassName("punteggioTrollBocca");
+            for (i = 0; i < punteggioTrollBocca.length; i++) {
+                punteggioTrollBocca[i].style.display = "none";
+            }
+
+            punteggioElfoBocca = document.getElementsByClassName("punteggioElfoBocca");
+            for (i = 0; i < punteggioElfoBocca.length; i++) {
+                punteggioElfoBocca[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioOrcoBocca).style.display = "block";
+        } 
+
+    // punteggio VAMPIRO
+       //FACCIA
+       function compareBarraVampiro(evt, appareBarraVampiro) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraVampiro).style.display = "block";
+        }
+
+        function comparePunteggioVampiroFaccia(evt, apparePunteggioVampiroFaccia) {
+            var i, punteggioVampiroFaccia, tablinks;
+
+        // Nasconde gli altri punteggi FACCIA
+            punteggioDrowFaccia = document.getElementsByClassName("punteggioDrowFaccia");
+            for (i = 0; i < punteggioDrowFaccia.length; i++) {
+                punteggioDrowFaccia[i].style.display = "none";
+            }
+
+            punteggioGoblinFaccia = document.getElementsByClassName("punteggioGoblinFaccia");
+            for (i = 0; i < punteggioGoblinFaccia.length; i++) {
+                punteggioGoblinFaccia[i].style.display = "none";
+            }
+
+            punteggioFollettoFaccia = document.getElementsByClassName("punteggioFollettoFaccia");
+            for (i = 0; i < punteggioFollettoFaccia.length; i++) {
+                punteggioFollettoFaccia[i].style.display = "none";
+            }
+
+            punteggioOrcoFaccia = document.getElementsByClassName("punteggioOrcoFaccia");
+            for (i = 0; i < punteggioOrcoFaccia.length; i++) {
+                punteggioOrcoFaccia[i].style.display = "none";
+            }
+
+            punteggioGnomoFaccia = document.getElementsByClassName("punteggioGnomoFaccia");
+            for (i = 0; i < punteggioGnomoFaccia.length; i++) {
+                punteggioGnomoFaccia[i].style.display = "none";
+            }
+
+            punteggioTrollFaccia = document.getElementsByClassName("punteggioTrollFaccia");
+            for (i = 0; i < punteggioTrollFaccia.length; i++) {
+                punteggioTrollFaccia[i].style.display = "none";
+            }
+
+            punteggioElfoFaccia = document.getElementsByClassName("punteggioElfoFaccia");
+            for (i = 0; i < punteggioElfoFaccia.length; i++) {
+                punteggioElfoFaccia[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioVampiroFaccia).style.display = "block";
+        }
+
+        //OCCHI
+        function compareBarraVampiro(evt, appareBarraVampiro) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraVampiro).style.display = "block";
+        }
+        function comparePunteggioVampiroOcchi(evt, apparePunteggioVampiroOcchi) {
+            var i, punteggioVampiroOcchi, tablinks;
+
+        // Nasconde gli altri punteggi OCCHI
+            punteggioDrowOcchi = document.getElementsByClassName("punteggioDrowOcchi");
+            for (i = 0; i < punteggioDrowOcchi.length; i++) {
+                punteggioDrowOcchi[i].style.display = "none";
+            }
+
+            punteggioGoblinOcchi = document.getElementsByClassName("punteggioGoblinOcchi");
+            for (i = 0; i < punteggioGoblinOcchi.length; i++) {
+                punteggioGoblinOcchi[i].style.display = "none";
+            }
+
+            punteggioFollettoOcchi = document.getElementsByClassName("punteggioFollettoOcchi");
+            for (i = 0; i < punteggioFollettoOcchi.length; i++) {
+                punteggioFollettoOcchi[i].style.display = "none";
+            }
+
+            punteggioOrcoOcchi = document.getElementsByClassName("punteggioOrcoOcchi");
+            for (i = 0; i < punteggioOrcoOcchi.length; i++) {
+                punteggioOrcoOcchi[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoOcchi");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollOcchi");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoOcchi = document.getElementsByClassName("punteggioElfoOcchi");
+            for (i = 0; i < punteggioElfoOcchi.length; i++) {
+                punteggioElfoOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioVampiroOcchi).style.display = "block";
+        }
+
+        //NASO
+        function compareBarraVampiro(evt, appareBarraVampiro) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraVampiro).style.display = "block";
+        }
+
+        function comparePunteggioVampiroNaso(evt, apparePunteggioVampiroNaso) {
+            var i, punteggioVampiroNaso, tablinks;
+
+        // Nasconde gli altri punteggi NASO
+            punteggioDrowNaso = document.getElementsByClassName("punteggioDrowNaso");
+            for (i = 0; i < punteggioDrowNaso.length; i++) {
+                punteggioDrowNaso[i].style.display = "none";
+            }
+
+            punteggioGoblinNaso = document.getElementsByClassName("punteggioGoblinNaso");
+            for (i = 0; i < punteggioGoblinNaso.length; i++) {
+                punteggioGoblinNaso[i].style.display = "none";
+            }
+
+            punteggioFollettoNaso = document.getElementsByClassName("punteggioFollettoNaso");
+            for (i = 0; i < punteggioFollettoNaso.length; i++) {
+                punteggioFollettoNaso[i].style.display = "none";
+            }
+
+            punteggioOrcoNaso = document.getElementsByClassName("punteggioOrcoNaso");
+            for (i = 0; i < punteggioOrcoNaso.length; i++) {
+                punteggioOrcoNaso[i].style.display = "none";
+            }
+
+            punteggioGnomoNaso = document.getElementsByClassName("punteggioGnomoNaso");
+            for (i = 0; i < punteggioGnomoNaso.length; i++) {
+                punteggioGnomoNaso[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollNaso");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoNaso = document.getElementsByClassName("punteggioElfoNaso");
+            for (i = 0; i < punteggioElfoNaso.length; i++) {
+                punteggioElfoNaso[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioVampiroNaso).style.display = "block";
+        }
+
+        //BOCCA
+        function compareBarraVampiro(evt, appareBarraVampiro) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraVampiro).style.display = "block";
+        }
+
+        function comparePunteggioVampiroBocca(evt, apparePunteggioVampiroBocca) {
+            var i, punteggioVampiroBocca, tablinks;
+
+        // Nasconde gli altri punteggi BOCCA
+            punteggioDrowBocca = document.getElementsByClassName("punteggioDrowBocca");
+            for (i = 0; i < punteggioDrowBocca.length; i++) {
+                punteggioDrowBocca[i].style.display = "none";
+            }
+
+            punteggioGoblinBocca = document.getElementsByClassName("punteggioGoblinBocca");
+            for (i = 0; i < punteggioGoblinBocca.length; i++) {
+                punteggioGoblinBocca[i].style.display = "none";
+            }
+
+            punteggioFollettoBocca = document.getElementsByClassName("punteggioFollettoBocca");
+            for (i = 0; i < punteggioFollettoBocca.length; i++) {
+                punteggioFollettoBocca[i].style.display = "none";
+            }
+
+            punteggioOrcoBocca = document.getElementsByClassName("punteggioOrcoBocca");
+            for (i = 0; i < punteggioOrcoBocca.length; i++) {
+                punteggioOrcoBocca[i].style.display = "none";
+            }
+
+            punteggioGnomoBocca = document.getElementsByClassName("punteggioGnomoBocca");
+            for (i = 0; i < punteggioGnomoBocca.length; i++) {
+                punteggioGnomoBocca[i].style.display = "none";
+            }
+
+            punteggioTrollBocca = document.getElementsByClassName("punteggioTrollBocca");
+            for (i = 0; i < punteggioTrollBocca.length; i++) {
+                punteggioTrollBocca[i].style.display = "none";
+            }
+
+            punteggioElfoBocca = document.getElementsByClassName("punteggioElfoBocca");
+            for (i = 0; i < punteggioElfoBocca.length; i++) {
+                punteggioElfoBocca[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioVampiroBocca).style.display = "block";
+        } 
+
+    // punteggio GNOMO
+       //FACCIA
+       function compareBarraGnomo(evt, appareBarraGoblin) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraGoblin).style.display = "block";
+        }
+
+        function comparePunteggioGnomoFaccia(evt, apparePunteggioGnomoFaccia) {
+            var i, punteggioGnomoFaccia, tablinks;
+
+        // Nasconde gli altri punteggi FACCIA
+            punteggioDrowFaccia = document.getElementsByClassName("punteggioDrowFaccia");
+            for (i = 0; i < punteggioDrowFaccia.length; i++) {
+                punteggioDrowFaccia[i].style.display = "none";
+            }
+
+            punteggioGoblinFaccia = document.getElementsByClassName("punteggioGoblinFaccia");
+            for (i = 0; i < punteggioGoblinFaccia.length; i++) {
+                punteggioGoblinFaccia[i].style.display = "none";
+            }
+
+            punteggioFollettoFaccia = document.getElementsByClassName("punteggioFollettoFaccia");
+            for (i = 0; i < punteggioFollettoFaccia.length; i++) {
+                punteggioFollettoFaccia[i].style.display = "none";
+            }
+
+            punteggioOrcoFaccia = document.getElementsByClassName("punteggioOrcoFaccia");
+            for (i = 0; i < punteggioOrcoFaccia.length; i++) {
+                punteggioOrcoFaccia[i].style.display = "none";
+            }
+
+            punteggioVampiroFaccia = document.getElementsByClassName("punteggioVampiroFaccia");
+            for (i = 0; i < punteggioVampiroFaccia.length; i++) {
+                punteggioVampiroFaccia[i].style.display = "none";
+            }
+
+            punteggioTrollFaccia = document.getElementsByClassName("punteggioTrollFaccia");
+            for (i = 0; i < punteggioTrollFaccia.length; i++) {
+                punteggioTrollFaccia[i].style.display = "none";
+            }
+
+            punteggioElfoFaccia = document.getElementsByClassName("punteggioElfoFaccia");
+            for (i = 0; i < punteggioElfoFaccia.length; i++) {
+                punteggioElfoFaccia[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioGnomoFaccia).style.display = "block";
+        }
+
+        //OCCHI
+        function compareBarraGnomo(evt, appareBarraGnomo) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraGnomo).style.display = "block";
+        }
+        function comparePunteggioGnomoOcchi(evt, apparePunteggioGnomoOcchi) {
+            var i, punteggioGnomoOcchi, tablinks;
+
+        // Nasconde gli altri punteggi OCCHI
+            punteggioDrowOcchi = document.getElementsByClassName("punteggioDrowOcchi");
+            for (i = 0; i < punteggioDrowOcchi.length; i++) {
+                punteggioDrowOcchi[i].style.display = "none";
+            }
+
+            punteggioGoblinOcchi = document.getElementsByClassName("punteggioGoblinOcchi");
+            for (i = 0; i < punteggioGoblinOcchi.length; i++) {
+                punteggioGoblinOcchi[i].style.display = "none";
+            }
+
+            punteggioFollettoOcchi = document.getElementsByClassName("punteggioFollettoOcchi");
+            for (i = 0; i < punteggioFollettoOcchi.length; i++) {
+                punteggioFollettoOcchi[i].style.display = "none";
+            }
+
+            punteggioOrcoOcchi = document.getElementsByClassName("punteggioOrcoOcchi");
+            for (i = 0; i < punteggioOrcoOcchi.length; i++) {
+                punteggioOrcoOcchi[i].style.display = "none";
+            }
+
+            punteggioVampiroOcchi = document.getElementsByClassName("punteggioVampiroOcchi");
+            for (i = 0; i < punteggioVampiroOcchi.length; i++) {
+                punteggioVampiroOcchi[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollOcchi");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoOcchi = document.getElementsByClassName("punteggioElfoOcchi");
+            for (i = 0; i < punteggioElfoOcchi.length; i++) {
+                punteggioElfoOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioGnomoOcchi).style.display = "block";
+        }
+
+        //NASO
+        function compareBarraGnomo(evt, appareBarraGnomo) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraGnomo).style.display = "block";
+        }
+
+        function comparePunteggioGnomoNaso(evt, apparePunteggioGnomoNaso) {
+            var i, punteggioGnomoNaso, tablinks;
+
+        // Nasconde gli altri punteggi NASO
+            punteggioDrowNaso = document.getElementsByClassName("punteggioDrowNaso");
+            for (i = 0; i < punteggioDrowNaso.length; i++) {
+                punteggioDrowNaso[i].style.display = "none";
+            }
+
+            punteggioGoblinNaso = document.getElementsByClassName("punteggioGoblinNaso");
+            for (i = 0; i < punteggioGoblinNaso.length; i++) {
+                punteggioGoblinNaso[i].style.display = "none";
+            }
+
+            punteggioFollettoNaso = document.getElementsByClassName("punteggioFollettoNaso");
+            for (i = 0; i < punteggioFollettoNaso.length; i++) {
+                punteggioFollettoNaso[i].style.display = "none";
+            }
+
+            punteggioOrcoNaso = document.getElementsByClassName("punteggioOrcoNaso");
+            for (i = 0; i < punteggioOrcoNaso.length; i++) {
+                punteggioOrcoNaso[i].style.display = "none";
+            }
+
+            punteggioVampiroNaso = document.getElementsByClassName("punteggioVampiroNaso");
+            for (i = 0; i < punteggioVampiroNaso.length; i++) {
+                punteggioVampiroNaso[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollNaso");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoNaso = document.getElementsByClassName("punteggioElfoNaso");
+            for (i = 0; i < punteggioElfoNaso.length; i++) {
+                punteggioElfoNaso[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioGnomoNaso).style.display = "block";
+        }
+
+        //BOCCA
+        function compareBarraGnomo(evt, appareBarraGnomo) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraGnomo).style.display = "block";
+        }
+
+        function comparePunteggioGnomoBocca(evt, apparePunteggioGnomoBocca) {
+            var i, punteggioGnomoBocca, tablinks;
+
+        // Nasconde gli altri punteggi BOCCA
+            punteggioDrowBocca = document.getElementsByClassName("punteggioDrowBocca");
+            for (i = 0; i < punteggioDrowBocca.length; i++) {
+                punteggioDrowBocca[i].style.display = "none";
+            }
+
+            punteggioGoblinBocca = document.getElementsByClassName("punteggioGoblinBocca");
+            for (i = 0; i < punteggioGoblinBocca.length; i++) {
+                punteggioGoblinBocca[i].style.display = "none";
+            }
+
+            punteggioFollettoBocca = document.getElementsByClassName("punteggioFollettoBocca");
+            for (i = 0; i < punteggioFollettoBocca.length; i++) {
+                punteggioFollettoBocca[i].style.display = "none";
+            }
+
+            punteggioOrcoBocca = document.getElementsByClassName("punteggioOrcoBocca");
+            for (i = 0; i < punteggioOrcoBocca.length; i++) {
+                punteggioOrcoBocca[i].style.display = "none";
+            }
+
+            punteggioVampiroBocca = document.getElementsByClassName("punteggioVampiroBocca");
+            for (i = 0; i < punteggioVampiroBocca.length; i++) {
+                punteggioVampiroBocca[i].style.display = "none";
+            }
+
+            punteggioTrollBocca = document.getElementsByClassName("punteggioTrollBocca");
+            for (i = 0; i < punteggioTrollBocca.length; i++) {
+                punteggioTrollBocca[i].style.display = "none";
+            }
+
+            punteggioElfoBocca = document.getElementsByClassName("punteggioElfoBocca");
+            for (i = 0; i < punteggioElfoBocca.length; i++) {
+                punteggioElfoBocca[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioGnomoBocca).style.display = "block";
+        } 
+
+    // punteggio TROLL
+       //FACCIA
+       function compareBarraTroll(evt, appareBarraTroll) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraTroll).style.display = "block";
+        }
+
+        function comparePunteggioTrollFaccia(evt, apparePunteggioTrollFaccia) {
+            var i, punteggioTrollFaccia, tablinks;
+
+        // Nasconde gli altri punteggi FACCIA
+            punteggioDrowFaccia = document.getElementsByClassName("punteggioDrowFaccia");
+            for (i = 0; i < punteggioDrowFaccia.length; i++) {
+                punteggioDrowFaccia[i].style.display = "none";
+            }
+
+            punteggioGoblinFaccia = document.getElementsByClassName("punteggioGoblinFaccia");
+            for (i = 0; i < punteggioGoblinFaccia.length; i++) {
+                punteggioGoblinFaccia[i].style.display = "none";
+            }
+
+            punteggioFollettoFaccia = document.getElementsByClassName("punteggioFollettoFaccia");
+            for (i = 0; i < punteggioFollettoFaccia.length; i++) {
+                punteggioFollettoFaccia[i].style.display = "none";
+            }
+
+            punteggioOrcoFaccia = document.getElementsByClassName("punteggioOrcoFaccia");
+            for (i = 0; i < punteggioOrcoFaccia.length; i++) {
+                punteggioOrcoFaccia[i].style.display = "none";
+            }
+
+            punteggioVampiroFaccia = document.getElementsByClassName("punteggioVampiroFaccia");
+            for (i = 0; i < punteggioVampiroFaccia.length; i++) {
+                punteggioVampiroFaccia[i].style.display = "none";
+            }
+
+            punteggioGnomoFaccia = document.getElementsByClassName("punteggioGnomoFaccia");
+            for (i = 0; i < punteggioGnomoFaccia.length; i++) {
+                punteggioGnomoFaccia[i].style.display = "none";
+            }
+
+            punteggioElfoFaccia = document.getElementsByClassName("punteggioElfoFaccia");
+            for (i = 0; i < punteggioElfoFaccia.length; i++) {
+                punteggioElfoFaccia[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioTrollFaccia).style.display = "block";
+        }
+
+        //OCCHI
+        function compareBarraTroll(evt, appareBarraTroll) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraTroll).style.display = "block";
+        }
+        function comparePunteggioTrollOcchi(evt, apparePunteggioTrollOcchi) {
+            var i, punteggioTrollOcchi, tablinks;
+
+        // Nasconde gli altri punteggi OCCHI
+            punteggioDrowOcchi = document.getElementsByClassName("punteggioDrowOcchi");
+            for (i = 0; i < punteggioDrowOcchi.length; i++) {
+                punteggioDrowOcchi[i].style.display = "none";
+            }
+
+            punteggioGoblinOcchi = document.getElementsByClassName("punteggioGoblinOcchi");
+            for (i = 0; i < punteggioGoblinOcchi.length; i++) {
+                punteggioGoblinOcchi[i].style.display = "none";
+            }
+
+            punteggioFollettoOcchi = document.getElementsByClassName("punteggioFollettoOcchi");
+            for (i = 0; i < punteggioFollettoOcchi.length; i++) {
+                punteggioFollettoOcchi[i].style.display = "none";
+            }
+
+            punteggioOrcoOcchi = document.getElementsByClassName("punteggioOrcoOcchi");
+            for (i = 0; i < punteggioOrcoOcchi.length; i++) {
+                punteggioOrcoOcchi[i].style.display = "none";
+            }
+
+            punteggioVampiroOcchi = document.getElementsByClassName("punteggioVampiroOcchi");
+            for (i = 0; i < punteggioVampiroOcchi.length; i++) {
+                punteggioVampiroOcchi[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoOcchi");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoOcchi = document.getElementsByClassName("punteggioElfoOcchi");
+            for (i = 0; i < punteggioElfoOcchi.length; i++) {
+                punteggioElfoOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioTrollOcchi).style.display = "block";
+        }
+
+        //NASO
+        function compareBarraTroll(evt, appareBarraTroll) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraTroll).style.display = "block";
+        }
+
+        function comparePunteggioTrollNaso(evt, apparePunteggioTrollNaso) {
+            var i, punteggioTrollNaso, tablinks;
+
+        // Nasconde gli altri punteggi NASO
+            punteggioDrowNaso = document.getElementsByClassName("punteggioDrowNaso");
+            for (i = 0; i < punteggioDrowNaso.length; i++) {
+                punteggioDrowNaso[i].style.display = "none";
+            }
+
+            punteggioGoblinNaso = document.getElementsByClassName("punteggioGoblinNaso");
+            for (i = 0; i < punteggioGoblinNaso.length; i++) {
+                punteggioGoblinNaso[i].style.display = "none";
+            }
+
+            punteggioFollettoNaso = document.getElementsByClassName("punteggioFollettoNaso");
+            for (i = 0; i < punteggioFollettoNaso.length; i++) {
+                punteggioFollettoNaso[i].style.display = "none";
+            }
+
+            punteggioOrcoNaso = document.getElementsByClassName("punteggioOrcoNaso");
+            for (i = 0; i < punteggioOrcoNaso.length; i++) {
+                punteggioOrcoNaso[i].style.display = "none";
+            }
+
+            punteggioVampiroNaso = document.getElementsByClassName("punteggioVampiroNaso");
+            for (i = 0; i < punteggioVampiroNaso.length; i++) {
+                punteggioVampiroNaso[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoNaso");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioElfoNaso = document.getElementsByClassName("punteggioElfoNaso");
+            for (i = 0; i < punteggioElfoNaso.length; i++) {
+                punteggioElfoNaso[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioTrollNaso).style.display = "block";
+        }
+
+        //BOCCA
+        function compareBarraTroll(evt, appareBarraTroll) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraTroll).style.display = "block";
+        }
+
+        function comparePunteggioTrollBocca(evt, apparePunteggioTrollBocca) {
+            var i, punteggioTrollBocca, tablinks;
+
+        // Nasconde gli altri punteggi BOCCA
+            punteggioDrowBocca = document.getElementsByClassName("punteggioDrowBocca");
+            for (i = 0; i < punteggioDrowBocca.length; i++) {
+                punteggioDrowBocca[i].style.display = "none";
+            }
+
+            punteggioGoblinBocca = document.getElementsByClassName("punteggioGoblinBocca");
+            for (i = 0; i < punteggioGoblinBocca.length; i++) {
+                punteggioGoblinBocca[i].style.display = "none";
+            }
+
+            punteggioFollettoBocca = document.getElementsByClassName("punteggioFollettoBocca");
+            for (i = 0; i < punteggioFollettoBocca.length; i++) {
+                punteggioFollettoBocca[i].style.display = "none";
+            }
+
+            punteggioOrcoBocca = document.getElementsByClassName("punteggioOrcoBocca");
+            for (i = 0; i < punteggioOrcoBocca.length; i++) {
+                punteggioOrcoBocca[i].style.display = "none";
+            }
+
+            punteggioVampiroBocca = document.getElementsByClassName("punteggioVampiroBocca");
+            for (i = 0; i < punteggioVampiroBocca.length; i++) {
+                punteggioVampiroBocca[i].style.display = "none";
+            }
+
+            punteggioGnomoBocca = document.getElementsByClassName("punteggioGnomoBocca");
+            for (i = 0; i < punteggioGnomoBocca.length; i++) {
+                punteggioGnomoBocca[i].style.display = "none";
+            }
+
+            punteggioElfoBocca = document.getElementsByClassName("punteggioElfoBocca");
+            for (i = 0; i < punteggioElfoBocca.length; i++) {
+                punteggioElfoBocca[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioTrollBocca).style.display = "block";
+        }
+
+    // punteggio ELFO
+       //FACCIA
+       function compareBarraElfo(evt, appareBarraElfo) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraElfo).style.display = "block";
+        }
+
+        function comparePunteggioElfoFaccia(evt, apparePunteggioElfoFaccia) {
+            var i, punteggioElfoFaccia, tablinks;
+
+        // Nasconde gli altri punteggi FACCIA
+            punteggioDrowFaccia = document.getElementsByClassName("punteggioDrowFaccia");
+            for (i = 0; i < punteggioDrowFaccia.length; i++) {
+                punteggioDrowFaccia[i].style.display = "none";
+            }
+
+            punteggioGoblinFaccia = document.getElementsByClassName("punteggioGoblinFaccia");
+            for (i = 0; i < punteggioGoblinFaccia.length; i++) {
+                punteggioGoblinFaccia[i].style.display = "none";
+            }
+
+            punteggioFollettoFaccia = document.getElementsByClassName("punteggioFollettoFaccia");
+            for (i = 0; i < punteggioFollettoFaccia.length; i++) {
+                punteggioFollettoFaccia[i].style.display = "none";
+            }
+
+            punteggioOrcoFaccia = document.getElementsByClassName("punteggioOrcoFaccia");
+            for (i = 0; i < punteggioOrcoFaccia.length; i++) {
+                punteggioOrcoFaccia[i].style.display = "none";
+            }
+
+            punteggioVampiroFaccia = document.getElementsByClassName("punteggioVampiroFaccia");
+            for (i = 0; i < punteggioVampiroFaccia.length; i++) {
+                punteggioVampiroFaccia[i].style.display = "none";
+            }
+
+            punteggioGnomoFaccia = document.getElementsByClassName("punteggioGnomoFaccia");
+            for (i = 0; i < punteggioGnomoFaccia.length; i++) {
+                punteggioGnomoFaccia[i].style.display = "none";
+            }
+
+            punteggioTrollFaccia = document.getElementsByClassName("punteggioTrollFaccia");
+            for (i = 0; i < punteggioTrollFaccia.length; i++) {
+                punteggioTrollFaccia[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioElfoFaccia).style.display = "block";
+        }
+
+        //OCCHI
+        function compareBarraElfo(evt, appareBarraElfo) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraElfo).style.display = "block";
+        }
+        function comparePunteggioElfoOcchi(evt, apparePunteggioElfoOcchi) {
+            var i, punteggioElfoOcchi, tablinks;
+
+        // Nasconde gli altri punteggi OCCHI
+            punteggioDrowOcchi = document.getElementsByClassName("punteggioDrowOcchi");
+            for (i = 0; i < punteggioDrowOcchi.length; i++) {
+                punteggioDrowOcchi[i].style.display = "none";
+            }
+
+            punteggioGoblinOcchi = document.getElementsByClassName("punteggioGoblinOcchi");
+            for (i = 0; i < punteggioGoblinOcchi.length; i++) {
+                punteggioGoblinOcchi[i].style.display = "none";
+            }
+
+            punteggioFollettoOcchi = document.getElementsByClassName("punteggioFollettoOcchi");
+            for (i = 0; i < punteggioFollettoOcchi.length; i++) {
+                punteggioFollettoOcchi[i].style.display = "none";
+            }
+
+            punteggioOrcoOcchi = document.getElementsByClassName("punteggioOrcoOcchi");
+            for (i = 0; i < punteggioOrcoOcchi.length; i++) {
+                punteggioOrcoOcchi[i].style.display = "none";
+            }
+
+            punteggioVampiroOcchi = document.getElementsByClassName("punteggioVampiroOcchi");
+            for (i = 0; i < punteggioVampiroOcchi.length; i++) {
+                punteggioVampiroOcchi[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoOcchi");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioTrollOcchi = document.getElementsByClassName("punteggioTrollOcchi");
+            for (i = 0; i < punteggioTrollOcchi.length; i++) {
+                punteggioTrollOcchi[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioElfoOcchi).style.display = "block";
+        }
+
+        //NASO
+        function compareBarraElfo(evt, appareBarraElfo) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraElfo).style.display = "block";
+        }
+
+        function comparePunteggioElfoNaso(evt, apparePunteggioElfoNaso) {
+            var i, punteggioElfoNaso, tablinks;
+
+        // Nasconde gli altri punteggi NASO
+            punteggioDrowNaso = document.getElementsByClassName("punteggioDrowNaso");
+            for (i = 0; i < punteggioDrowNaso.length; i++) {
+                punteggioDrowNaso[i].style.display = "none";
+            }
+
+            punteggioGoblinNaso = document.getElementsByClassName("punteggioGoblinNaso");
+            for (i = 0; i < punteggioGoblinNaso.length; i++) {
+                punteggioGoblinNaso[i].style.display = "none";
+            }
+
+            punteggioFollettoNaso = document.getElementsByClassName("punteggioFollettoNaso");
+            for (i = 0; i < punteggioFollettoNaso.length; i++) {
+                punteggioFollettoNaso[i].style.display = "none";
+            }
+
+            punteggioOrcoNaso = document.getElementsByClassName("punteggioOrcoNaso");
+            for (i = 0; i < punteggioOrcoNaso.length; i++) {
+                punteggioOrcoNaso[i].style.display = "none";
+            }
+
+            punteggioVampiroNaso = document.getElementsByClassName("punteggioVampiroNaso");
+            for (i = 0; i < punteggioVampiroNaso.length; i++) {
+                punteggioVampiroNaso[i].style.display = "none";
+            }
+
+            punteggioGnomoOcchi = document.getElementsByClassName("punteggioGnomoNaso");
+            for (i = 0; i < punteggioGnomoOcchi.length; i++) {
+                punteggioGnomoOcchi[i].style.display = "none";
+            }
+
+            punteggioTrollNaso = document.getElementsByClassName("punteggioTrollNaso");
+            for (i = 0; i < punteggioTrollNaso.length; i++) {
+                punteggioTrollNaso[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioElfoNaso).style.display = "block";
+        }
+
+        //BOCCA
+        function compareBarraElfo(evt, appareBarraElfo) {
+            var i, barraPunteggio, tablinks;
+
+            document.getElementById(appareBarraElfo).style.display = "block";
+        }
+
+        function comparePunteggioElfoBocca(evt, apparePunteggioElfoBocca) {
+            var i, punteggioElfoBocca, tablinks;
+
+        // Nasconde gli altri punteggi BOCCA
+            punteggioDrowBocca = document.getElementsByClassName("punteggioDrowBocca");
+            for (i = 0; i < punteggioDrowBocca.length; i++) {
+                punteggioDrowBocca[i].style.display = "none";
+            }
+
+            punteggioGoblinBocca = document.getElementsByClassName("punteggioGoblinBocca");
+            for (i = 0; i < punteggioGoblinBocca.length; i++) {
+                punteggioGoblinBocca[i].style.display = "none";
+            }
+
+            punteggioFollettoBocca = document.getElementsByClassName("punteggioFollettoBocca");
+            for (i = 0; i < punteggioFollettoBocca.length; i++) {
+                punteggioFollettoBocca[i].style.display = "none";
+            }
+
+            punteggioOrcoBocca = document.getElementsByClassName("punteggioOrcoBocca");
+            for (i = 0; i < punteggioOrcoBocca.length; i++) {
+                punteggioOrcoBocca[i].style.display = "none";
+            }
+
+            punteggioVampiroBocca = document.getElementsByClassName("punteggioVampiroBocca");
+            for (i = 0; i < punteggioVampiroBocca.length; i++) {
+                punteggioVampiroBocca[i].style.display = "none";
+            }
+
+            punteggioGnomoBocca = document.getElementsByClassName("punteggioGnomoBocca");
+            for (i = 0; i < punteggioGnomoBocca.length; i++) {
+                punteggioGnomoBocca[i].style.display = "none";
+            }
+
+            punteggioTrollBocca = document.getElementsByClassName("punteggioTrollBocca");
+            for (i = 0; i < punteggioTrollBocca.length; i++) {
+                punteggioTrollBocca[i].style.display = "none";
+            }
+
+            document.getElementById(apparePunteggioElfoBocca).style.display = "block";
+        }
+    </script>
+    </body>
+</html>
