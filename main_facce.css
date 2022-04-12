@@ -7,8 +7,9 @@ body {
     position: absolute;
     width: 400px;
     height: 400px;
-    margin-top: 300px;
-    left: 400px;
+    top: 30%;
+    right: 35%;
+    left: 35%;
 }
 
 .pelle {

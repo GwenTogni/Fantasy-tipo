@@ -8,92 +8,85 @@
         <style type="text/css">
             
             .interfaccia {
-                background-color:rgba(185, 212, 185);
+                background-color:rgba(185, 212, 185, 0.3);
                 position: absolute;
-                right: 500px;
+                right: 20%;
+                bottom: 0;
                 top: 0;
-                bottom: 0;   
-                padding: 30px;
-                width: fit-content;  
-                max-width: 250px;
-                min-width: 100px;             
+                padding: 2%;
+                max-width: 15%;
             }
 
             .interfacciaPunteggio {
                 background: none;
                 position: absolute;
-                right: 150px;
+                right: 0;
                 top: 0;
-                bottom: 0;   
-                padding: 50px;
-                width: max-content;  
-                max-width: 400px;
-                min-width: 100px;
+                bottom: 0; 
+                padding: 2%;  
+                width: 7%; 
             }
 
             .interfaccia2 {
-                background-color:rgb(167, 193, 203);
+                background-color:rgb(167, 193, 203, 0.3);
                 position: absolute;
                 left: 0;
                 top: 0;
-                bottom: 0;   
-                padding: 30px;
+                bottom: 0;
+                padding: 2%;
                 width: fit-content;  
-                max-width: 250px;
-                min-width: 100px;          
+                max-width: 15%;
+                min-width: 7%;      
             }
 
             .interfacciaTesto {
-                background-color:rgba(203, 167, 202, 0.25);
+                background-color:rgba(203, 167, 202, 0.3);
                 position: absolute;
                 right: 0;
                 top: 0;
                 bottom: 0;   
-                padding: 50px;
-                padding-top: 50px;
-                width: fit-content;  
-                max-width: 400px;
-                min-width: 100px;
-                color: rgba(0, 0, 0, 0.575);
-                font-size: 12pt;
+                padding: 2%;
+                width: 15%;  
+                color: rgba(0, 0, 0, 0.5);
+                font-size: 100%;
                 font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
             }
 
-            .interfaccia input[type="range"] {            
-        		height: 10px;
+            .interfaccia input[type="range"] {
+                position: absolute;           
         		appearance: none;
         		-webkit-appearance: none;
         		border: none;
-        		background-color: rgba(0, 0, 0, 0.575);
+        		background-color: rgba(3, 8, 109, 0.5);
         		display: block;
-                margin-left: 30px;
-                border-radius: 5px;
+                height: 5px;
+                border-radius: 2px;
+                right: 20%;
+                left: 20%;
             }
 
             .interfaccia label {
-                font-family: 'Gill Sans', 'Gill Sans MT';
-                color: rgba(0, 0, 0, 0.575);
-                font-size: 14pt;
-                padding-top: 30px;
-                padding-left: 30px;
-                padding-bottom: 10px;
-                height: 20px;
+                color: rgba(3, 8, 109, 0.5);
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+                font-size: 100%;
+                padding: 10%;
+                padding-right: 20%;
         		display: block;
             }
 
         /* PULSANTI interfaccia */
             .pulsante0 {
-                width: 100%;
-                height: 100%;
+                width: 80%;
+                height: 80%;
             }
 
             .pulsante1 {
                 background: none;
-                width: 100px;
-                height: 100px;
-                margin-right: 10px;
-                margin-top: 10px;
+                width: 50%;
+                height: 50%;
                 border: none;
+                float: right;
+                padding: 5%;
             }
 
             #test_2 {
@@ -104,33 +97,53 @@
             .tab {
                 width: 80px;
                 height: 80px;
-                margin-left: 10px;
-                margin-top: 10px;
                 color: rgba(0, 0, 0, 0.575);
-}
+            }
+
+            .tabDownload {
+                position: absolute;
+                bottom: 5%;
+                color: rgba(0, 0, 0, 0.575);
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+                font-size: 120%;
+                text-align: right;
+                padding-right: 20%;
+                border: none;
+                background: none;
+            }
+
+            .tabDownload:hover {
+                font-size: 130%;
+                color: black;
+            }
+
+            .tabDownload:active {
+                font-size: 110%;
+                color: white;
+            }
 
         /* Pulsanti che aprono il tab */
             .tab button {
                 font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
-                font-size: 15pt;
+                font-size: 120%;
+                padding-bottom: 50%;
+                text-align: right;
                 float: right;
-                text-align: end;
                 width: fit-content;
                 height: 50px;
                 border: none;
-                margin-top: 10px;
                 color: rgba(0, 0, 0, 0.575);
                 background: none;
             }
 
         /* Pulsanti tab quando si passa sopra con il mouse */
             .tab button:hover {
-                font-size: 16pt;
+                font-size: 130%;
                 color: black;
             }
 
             .tab button:active {
-                font-size: 14pt;
+                font-size: 110%;
                 color: white;
             }
 
@@ -158,7 +171,7 @@
             .tabcontent button:hover {
                 background-color: rgb(207, 232, 207);
                 border-style: outset;
-                border-radius: 50px;
+                border-radius: 100%;
             }
 
             .tabcontent button:active {
@@ -169,60 +182,57 @@
     /* TESTI */
             .titolo {
                 position: absolute;
-                left: 450px;
-                margin-top: 20px;
+                right: 35%;
+                left: 35%;
                 color: rgba(0, 0, 0, 0.575);
-                font-size: 16pt;
+                font-size: 150%;
                 font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
-                text-align: center;
             }
 
             .testoIntro {
-                padding-bottom: 70px;
                 font-weight: lighter;
                 font-style: italic;
-                font-size: 12.5pt;
+                font-size: 90%;
+                font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
             }
 
             .testiFaccia {
                 position: absolute;
-                margin-top: 614px;
+                top: 50%;
                 color: rgba(0, 0, 0, 0.575);
-                font-size: 12pt;
+                font-size: 90%;
                 font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
             }
 
             .testiOcchi {
                 position: absolute;
-                margin-top: 664px;
+                top: 55%;
                 color: rgba(0, 0, 0, 0.575);
-                font-size: 12pt;
+                font-size: 90%;
                 font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
             }
 
             .testiNaso {
                 position: absolute;
-                margin-top: 714px;
+                top: 60%;
                 color: rgba(0, 0, 0, 0.575);
-                font-size: 12pt;
+                font-size: 90%;
                 font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
             }
 
             .testiBocca {
                 position: absolute;
-                margin-top: 764px;
+                top: 65%;
                 color: rgba(0, 0, 0, 0.575);
-                font-size: 12pt;
+                font-size: 90%;
                 font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
             }
 
             .testiPunteggio {
                 background: none;
-                color: rgba(0, 0, 0, 0.575);
-                width: min-content;
-                font-size: 12pt;
-                padding-top: 10px;
-                padding-bottom: 10px;
+                color: rgba(0, 0, 0, 0.575); 
+                font-size: 100%;
+                padding-bottom: 10%;
                 border: none;
                 font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
                 text-align: left;
@@ -240,18 +250,20 @@
 
     /* BARRA PUNTEGGIO */
             .barraPunteggio {
+                width: 100%;
+                min-width: 100px;
                 position: absolute;
                 display: none;
+                font-size: 100%;
             }
 
         /* FOLLETTO */
             .punteggioFollettoFaccia{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 245px;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -260,10 +272,9 @@
             .punteggioFollettoOcchi{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 245px;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -272,10 +283,9 @@
             .punteggioFollettoNaso{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 245px;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -284,10 +294,9 @@
             .punteggioFollettoBocca{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 245px;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -297,10 +306,10 @@
             .punteggioDrowFaccia{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 288px;
+                margin-top: 24%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -309,10 +318,10 @@
             .punteggioDrowOcchi{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 288px;
+                margin-top: 24%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -321,10 +330,10 @@
             .punteggioDrowNaso{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 288px;
+                margin-top: 24%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -333,10 +342,10 @@
             .punteggioDrowBocca{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 288px;
+                margin-top: 24%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -346,10 +355,10 @@
             .punteggioGoblinFaccia{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 331px;
+                margin-top: 48%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -358,10 +367,10 @@
             .punteggioGoblinOcchi{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 331px;
+                margin-top: 48%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -370,10 +379,10 @@
             .punteggioGoblinNaso{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 331px;
+                margin-top: 48%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -382,10 +391,10 @@
             .punteggioGoblinBocca{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 331px;
+                margin-top: 48%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -395,10 +404,10 @@
             .punteggioOrcoFaccia{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 374px;
+                margin-top: 72%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -407,10 +416,10 @@
             .punteggioOrcoOcchi{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 374px;
+                margin-top: 72%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -419,10 +428,10 @@
             .punteggioOrcoNaso{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 374px;
+                margin-top: 72%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -431,10 +440,10 @@
             .punteggioOrcoBocca{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 374px;
+                margin-top: 72%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -444,10 +453,10 @@
             .punteggioVampiroFaccia{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 417px;
+                margin-top: 96%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -456,10 +465,10 @@
             .punteggioVampiroOcchi{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 417px;
+                margin-top: 96%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -468,10 +477,10 @@
             .punteggioVampiroNaso{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 417px;
+                margin-top: 96%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -480,10 +489,10 @@
             .punteggioVampiroBocca{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 417px;
+                margin-top: 96%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -493,10 +502,10 @@
             .punteggioGnomoFaccia{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 460px;
+                margin-top: 120%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -505,10 +514,10 @@
             .punteggioGnomoOcchi{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 460px;
+                margin-top: 120%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -517,10 +526,10 @@
             .punteggioGnomoNaso{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 460px;
+                margin-top: 120%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -529,10 +538,10 @@
             .punteggioGnomoBocca{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 460px;
+                margin-top: 120%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -542,10 +551,10 @@
             .punteggioTrollFaccia{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 503px;
+                margin-top: 144%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -554,10 +563,10 @@
             .punteggioTrollOcchi{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 503px;
+                margin-top: 144%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -566,10 +575,10 @@
             .punteggioTrollNaso{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 503px;
+                margin-top: 144%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -578,10 +587,10 @@
             .punteggioTrollBocca{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 503px;
+                margin-top: 144%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -591,10 +600,10 @@
             .punteggioElfoFaccia{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 546px;
+                margin-top: 168%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -603,10 +612,10 @@
             .punteggioElfoOcchi{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 546px;
+                margin-top: 168%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -615,10 +624,10 @@
             .punteggioElfoNaso{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 546px;
+                margin-top: 168%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -627,10 +636,10 @@
             .punteggioElfoBocca{
                 display: none;
                 position: relative;
-                margin-left: 5px;
-                border-radius: 10px;
+                margin-left: 2%;
+                border-radius: 100%;
                 background-color: rgb(203, 167, 202);
-                margin-top: 546px;
+                margin-top: 168%;
                 height: 20px;
                 width: 20px;
                 float: left;
@@ -662,11 +671,6 @@
 
     <!-- testo a comparsa -->
         <div class="interfacciaTesto" id="interfaccia3">
-            <p class="testoIntro">
-                Da sempre il nostro mondo è abitato dalle creature del piccolo popolo: elfi, gnomi, folletti e tante altre!
-                </br>Queste vivono nascoste nella foresta, sulle montagne e tra le rocce, ma a volte capita che interagiscano con gli umani.
-                </br>Sei curioso/a di scoprire se per caso discendi da uno di questi popoli misteriosi? Allora seleziona i caratteri del tuo viso e lasciati sorprendere!
-            </p>
 
         <!-- PUNTEGGIO -->
             <button id="vFolletto" class="testiPunteggio"
@@ -945,7 +949,7 @@
             </div>
 
             <div id="descrizioneBocca7" class="tabtestiBocca">
-            <p class="testiBocca">Espressione indecifrabile</p>
+            <p class="testiBocca">Labbra indecifrabili</p>
             </div>
         </div>
 
@@ -1056,11 +1060,24 @@
                 <button class="tab button" onclick="scegliElemento(event, 'occhi')">OCCHI</button>
                 <button class="tab button" onclick="scegliElemento(event, 'naso')">NASO</button>
                 <button class="tab button" onclick="scegliElemento(event, 'bocca')">BOCCA</button>
+            <!-- colore pelle -->
+                <label for="#input-pelle">COLORE</label>
+                <input id="input-pelle" type="range" step="1" value="0" min="0" max="7">
             </div>
 
     <!-- finestra VOLTO -->
             <div id="volto" class="tabcontent">
-                <div class="tab">
+                <div class="tab">         
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <button class="pulsante1" onclick="scegliElemento(event, 'x')">X</button>
                 </div>
 
@@ -1119,15 +1136,21 @@
                 comparePunteggioElfoFaccia(event, 'punteggioElfo1')">
                     <img src="assets/pulsante_faccia_7.png" class="pulsante0">
                 </button>
-
-                <!-- colore pelle -->
-                    <label for="#input-pelle">COLORE</label>
-                    <input id="input-pelle" type="range" step="1" value="0" min="0" max="7">
             </div>
 
     <!-- finestra OCCHI -->
             <div id="occhi" class="tabcontent">
                 <div class="tab">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <button class="pulsante1" onclick="scegliElemento(event, 'x')">X</button>
                 </div>
                 
@@ -1191,6 +1214,16 @@
     <!-- finestra NASO -->
             <div id="naso" class="tabcontent">
                 <div class="tab">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <button class="pulsante1" onclick="scegliElemento(event, 'x')">X</button>
                 </div>
 
@@ -1254,6 +1287,16 @@
     <!-- finestra BOCCA -->
             <div id="bocca" class="tabcontent">
                 <div class="tab">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <button class="pulsante1" onclick="scegliElemento(event, 'x')">X</button>
                 </div>
 
@@ -1314,6 +1357,9 @@
                 </button>
               </div>
 
+    <!-- pulsante download -->
+                <button class="tabDownload">salva immagine</button>
+
     <!-- disegno avatar -->
             <div id="contenitore">
                 <div id="test_1"></div>
@@ -1331,11 +1377,11 @@
                 </form>
             </div>
 
-            <div class="tab">
-                <button class="pulsante1"
-                >download PNG
-                </button>
-            </div>
+            <p class="testoIntro">
+                Da sempre il nostro mondo è abitato dalle creature del piccolo popolo: elfi, gnomi, folletti e tante altre!
+                </br>Queste vivono nascoste nella foresta, sulle montagne e tra le rocce, ma a volte capita che interagiscano con gli umani.
+                </br>Sei curioso/a di scoprire se per caso discendi da uno di questi popoli misteriosi? Allora seleziona i caratteri del tuo viso e lasciati sorprendere!
+            </p>
         </div>
 
     <!-- colore pelle -->
